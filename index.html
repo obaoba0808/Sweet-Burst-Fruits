@@ -9,6 +9,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
         body { font-family: 'Noto Sans TC', sans-serif; }
+        .hero-bg {
+            background-image: url('images/hero-fruits.png');
+            background-size: cover;
+            background-position: center right;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -52,11 +57,13 @@
         </div>
     </nav>
 
-    <!-- 主視覺區 Hero Section -->
-    <section class="relative bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24 flex flex-col lg:flex-row items-center">
-            <!-- 文字內容 -->
-            <div class="lg:w-1/2 z-10">
+    <!-- 主視覺區 Hero Section - 背景圖版 -->
+    <section class="hero-bg relative min-h-[600px] flex items-center">
+        <!-- 左側漸層遮罩，讓文字更清晰 -->
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="lg:w-1/2">
                 <h3 class="text-xl font-bold text-gray-800 mb-2 italic">新鮮水果 · 產地直送</h3>
                 <h2 class="text-5xl lg:text-6xl font-black text-orange-500 mb-6">
                     爆甜多汁 · 幸福滿分 <span class="text-green-500">🍃</span>
@@ -84,12 +91,6 @@
                 <a href="#products" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-orange-200">
                     立即選購 <i class="fas fa-arrow-right ml-2"></i>
                 </a>
-            </div>
-            <!-- 圖片區 - 水果拼盤 -->
-            <div class="lg:w-1/2 mt-12 lg:mt-0 relative">
-                <img src="images/hero-fruits.png" alt="新鮮水果拼盤" class="rounded-3xl shadow-2xl relative z-10 w-full">
-                <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-orange-100 rounded-full -z-0"></div>
-                <div class="absolute -top-6 -left-6 w-32 h-32 bg-green-100 rounded-full -z-0"></div>
             </div>
         </div>
     </section>
