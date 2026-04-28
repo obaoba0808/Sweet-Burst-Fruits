@@ -1,76 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>爆甜水果行 - 極致甘甜 產地直達</title>
-    <meta name="description" content="爆甜水果行 - 嚴選高品質當季鮮果，產地直達您的餐桌。" />
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爆甜水果舖 - 新鮮、天然、爆甜</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
-      
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 80px;
-      }
-
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #FCF9F2; /* Lighter warm cream */
-        color: #1A2E1A; /* Dark forest green text */
-      }
-      
-      h1, h2, h3, h4, .font-serif {
-        font-family: 'Playfair Display', serif;
-      }
-
-      .text-accent {
-        color: #D97706; /* Warm orange */
-      }
-      
-      .bg-accent {
-        background-color: #D97706;
-      }
-
-      .bg-primary-green {
-        background-color: #2D5A27;
-      }
-
-      /* Hide scrollbar for clean aesthetic in horizontal scrolls if any */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-
-      @keyframes fade-in-up {
-        0% { opacity: 0; transform: translateY(30px); }
-        100% { opacity: 1; transform: translateY(0); }
-      }
-
-      .animate-fade-in-up {
-        animation: fade-in-up 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
-      }
-      
-      .animate-delay-200 { animation-delay: 0.2s; }
-      .animate-delay-400 { animation-delay: 0.4s; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.29.0",
-    "react/": "https://esm.sh/react@^19.2.0/",
-    "react": "https://esm.sh/react@^19.2.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.0/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+<body class="bg-gray-50">
+
+    <!-- 導覽列 Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="text-orange-500 text-3xl mr-2"><i class="fas fa-orange"></i></div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800 leading-none">爆甜水果舖</h1>
+                        <p class="text-xs text-gray-500 tracking-widest">新鮮．天然．爆甜</p>
+                    </div>
+                </div>
+
+                <!-- 選單 Links -->
+                <div class="hidden md:flex space-x-8 text-gray-600 font-medium">
+                    <a href="#" class="text-orange-500 border-b-2 border-orange-500">首頁</a>
+                    <a href="#" class="hover:text-orange-500 transition">所有商品</a>
+                    <a href="#" class="hover:text-orange-500 transition">熱銷推薦</a>
+                    <a href="#" class="hover:text-orange-500 transition">水果禮盒</a>
+                    <a href="#" class="hover:text-orange-500 transition">產地故事</a>
+                    <a href="#" class="hover:text-orange-500 transition">聯絡我們</a>
+                </div>
+
+                <!-- 工具欄 Icons -->
+                <div class="flex items-center space-x-5">
+                    <div class="relative hidden sm:block">
+                        <input type="text" placeholder="搜尋水果..." class="bg-gray-100 border-none rounded-full py-2 px-4 pl-10 focus:ring-2 focus:ring-orange-300 text-sm">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <a href="#" class="text-gray-600 hover:text-orange-500 text-xl"><i class="far fa-user"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-orange-500 text-xl relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主視覺區 Hero Section -->
+    <section class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24 flex flex-col lg:flex-row items-center">
+            <!-- 文字內容 -->
+            <div class="lg:w-1/2 z-10">
+                <h3 class="text-xl font-bold text-gray-800 mb-2 italic">新鮮水果 · 產地直送</h3>
+                <h2 class="text-5xl lg:text-6xl font-black text-orange-500 mb-6">
+                    爆甜多汁 · 幸福滿分 <span class="text-green-500">🍃</span>
+                </h2>
+                <p class="text-gray-600 text-lg mb-8 max-w-md leading-relaxed">
+                    嚴選當季最新鮮的水果，給你與家人最天然的美味！
+                </p>
+                
+                <!-- 特點 -->
+                <div class="flex flex-wrap gap-6 mb-10">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3"><i class="fas fa-leaf"></i></div>
+                        <div><p class="font-bold text-sm">產地直送</p><p class="text-xs text-gray-400">新鮮直達</p></div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3"><i class="fas fa-check-circle"></i></div>
+                        <div><p class="font-bold text-sm">品質保證</p><p class="text-xs text-gray-400">嚴格挑選</p></div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3"><i class="fas fa-truck"></i></div>
+                        <div><p class="font-bold text-sm">快速配送</p><p class="text-xs text-gray-400">宅配到府</p></div>
+                    </div>
+                </div>
+
+                <a href="#" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-orange-200">
+                    立即選購 <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            <!-- 圖片區 -->
+            <div class="lg:w-1/2 mt-12 lg:mt-0 relative">
+                <img src="https://images.unsplash.com/photo-1610832958506-aa56338406cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fruit" class="rounded-3xl shadow-2xl relative z-10">
+                <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-orange-100 rounded-full -z-0"></div>
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-green-100 rounded-full -z-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三大特色區 Features -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 當季新鮮 -->
+            <div class="bg-green-50 p-8 rounded-2xl flex items-center shadow-sm border border-green-100">
+                <div class="text-green-500 text-4xl mr-6"><i class="fas fa-seedling"></i></div>
+                <div>
+                    <h4 class="font-bold text-gray-800 text-xl">當季新鮮</h4>
+                    <p class="text-gray-500">嚴選當季最新鮮水果</p>
+                </div>
+            </div>
+            <!-- 精緻禮盒 -->
+            <div class="bg-orange-50 p-8 rounded-2xl flex items-center shadow-sm border border-orange-100">
+                <div class="text-orange-400 text-4xl mr-6"><i class="fas fa-gift"></i></div>
+                <div>
+                    <h4 class="font-bold text-gray-800 text-xl">精緻禮盒</h4>
+                    <p class="text-gray-500">送禮自用兩相宜</p>
+                </div>
+            </div>
+            <!-- 健康美味 -->
+            <div class="bg-pink-50 p-8 rounded-2xl flex items-center shadow-sm border border-pink-100">
+                <div class="text-pink-400 text-4xl mr-6"><i class="fas fa-heart"></i></div>
+                <div>
+                    <h4 class="font-bold text-gray-800 text-xl">健康美味</h4>
+                    <p class="text-gray-500">天然營養好安心</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 熱銷推薦 Product Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <h3 class="text-green-600 font-bold flex items-center mb-2">
+                    <i class="fas fa-leaf mr-2"></i> 熱銷推薦
+                </h3>
+                <div class="h-1 w-12 bg-green-500 rounded"></div>
+            </div>
+            <a href="#" class="text-gray-400 hover:text-orange-500 transition text-sm font-medium">查看更多 <i class="fas fa-chevron-right ml-1"></i></a>
+        </div>
+
+        <!-- 商品列表 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- 商品 1 -->
+            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
+                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
+                    <img src="https://images.unsplash.com/photo-1591073113125-e46713c829ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <h4 class="font-bold text-gray-800 text-lg">愛文芒果</h4>
+                <p class="text-gray-400 text-sm mb-4">香甜多汁，台灣在地</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-orange-500 font-bold text-xl">NT$ 699 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
+                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 商品 2 -->
+            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
+                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
+                    <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <h4 class="font-bold text-gray-800 text-lg">大湖草莓</h4>
+                <p class="text-gray-400 text-sm mb-4">鮮紅飽滿，香甜可口</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-orange-500 font-bold text-xl">NT$ 599 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
+                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 商品 3 -->
+            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
+                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
+                    <img src="https://images.unsplash.com/photo-1537640538966-79f369b41e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <h4 class="font-bold text-gray-800 text-lg">麝香葡萄</h4>
+                <p class="text-gray-400 text-sm mb-4">皮薄多汁，香氣濃郁</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-orange-500 font-bold text-xl">NT$ 799 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
+                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 商品 4 -->
+            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
+                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
+                    <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <h4 class="font-bold text-gray-800 text-lg">金鑽鳳梨</h4>
+                <p class="text-gray-400 text-sm mb-4">香甜不刺舌，台灣嚴選</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-orange-500 font-bold text-xl">NT$ 499 <span class="text-gray-400 text-xs font-normal">/ 顆</span></p>
+                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2024-2026 爆甜水果舖. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
