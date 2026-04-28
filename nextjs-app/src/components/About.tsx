@@ -17,7 +17,7 @@ const About: React.FC = () => {
             在快速收成、追求產量的時代，我們堅持「完熟採收」。我們深入產地，與不願妥協的老農合作，守護著那一顆顆在枝頭吸飽養分的紅寶石與翡翠。
           </p>
           <img
-            src="https://picsum.photos/seed/fruit-crates/1200/600"
+            src="/images/hero-fruit.jpg"
             alt="Fresh fruit crates"
             className="w-full h-[400px] object-cover mt-12 shadow-2xl rounded-2xl"
           />
@@ -30,7 +30,7 @@ const About: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]">
         <div className="order-2 lg:order-1 relative h-[500px] lg:h-auto overflow-hidden group">
           <img
-            src="https://picsum.photos/seed/market-stall/1200/600"
+            src="/images/p3-strawberry.jpg"
             alt="Vibrant market stall"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
           />
@@ -58,7 +58,7 @@ const About: React.FC = () => {
         </div>
         <div className="relative h-[500px] lg:h-auto overflow-hidden group">
           <img
-            src="https://picsum.photos/seed/orchard-green/1200/600"
+            src="/images/p2-mango.jpg"
             alt="Lush orchard"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105 brightness-90"
           />

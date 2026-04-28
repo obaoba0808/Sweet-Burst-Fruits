@@ -18,10 +18,10 @@ export const PRODUCTS: Product[] = [
     category: '嚴選進口',
     origin: '日本長野縣',
     weight: '單盒約600g',
-    imageUrl: 'https://picsum.photos/seed/muscat-grape/1000/1250',
+    imageUrl: '/images/p1-grape.jpg',
     gallery: [
-      'https://picsum.photos/seed/muscat-grape-1/1000/1250',
-      'https://picsum.photos/seed/muscat-grape-2/1000/1250'
+      '/images/p1-cherry.jpg',
+      '/images/hero-fruit.jpg'
     ],
     features: ['產地空運直達', '糖度18度以上', '無籽可連皮']
   },
@@ -35,10 +35,10 @@ export const PRODUCTS: Product[] = [
     category: '當季熱銷',
     origin: '台灣屏東枋山',
     weight: '每箱5台斤(約8-10顆)',
-    imageUrl: 'https://picsum.photos/seed/mango-fruit/1000/1250',
+    imageUrl: '/images/p2-mango.jpg',
     gallery: [
-      'https://picsum.photos/seed/mango-fruit-1/1000/1250',
-      'https://picsum.photos/seed/mango-fruit-2/1000/1250'
+      '/images/p2-mango-2.jpg',
+      '/images/hero-fruit.jpg'
     ],
     features: ['產地直送', '外銷等級', '自然完熟']
   },
@@ -52,10 +52,10 @@ export const PRODUCTS: Product[] = [
     category: '禮盒推薦',
     origin: '日本熊本縣',
     weight: '2盤/箱',
-    imageUrl: 'https://picsum.photos/seed/strawberry-box/1000/1250',
+    imageUrl: '/images/p3-strawberry.jpg',
     gallery: [
-      'https://picsum.photos/seed/strawberry-box-1/1000/1250',
-      'https://picsum.photos/seed/strawberry-box-2/1000/1250'
+      '/images/p3-strawberry-2.jpg',
+      '/images/hero-fruit.jpg'
     ],
     features: ['手採嚴選', '禮盒包裝', '濃郁果香']
   },
@@ -69,10 +69,10 @@ export const PRODUCTS: Product[] = [
     category: '在地優質',
     origin: '台灣宜蘭',
     weight: '約15-18台斤',
-    imageUrl: 'https://picsum.photos/seed/watermelon-slice/1000/1250',
+    imageUrl: '/images/p4-watermelon.jpg',
     gallery: [
-      'https://picsum.photos/seed/watermelon-slice-1/1000/1250',
-      'https://picsum.photos/seed/watermelon-slice-2/1000/1250'
+      '/images/hero-fruit.jpg',
+      '/images/p3-strawberry.jpg'
     ],
     features: ['產地直達', '保證沙甜', '一株一果']
   }
@@ -84,7 +84,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     title: '如何挑選最甜的蜜柑？',
     date: '2026年4月12日',
     excerpt: '教你從外皮、蒂頭與重量，一眼看出多汁飽滿的頂級鮮果。',
-    image: 'https://picsum.photos/seed/citrus-tangerine/1000/560',
+    image: '/images/hero-fruit.jpg',
     content: [
       { type: 'paragraph', text: '在爆甜水果行，我們每天都要與成千上萬的果實打交道。很多人問我們，挑選水果有什麼秘诀？其實，果實會自己說話。' },
       { type: 'paragraph', text: '以蜜柑為例，外皮的細緻程度反映了水分的飽和感。蒂頭若是凹矮且帶有朝氣的深綠色，代表它是緩緩熟成而非催熟。最重要的一點——沉甸甸的手感，那是飽滿果汁的保證。' },
@@ -97,7 +97,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     title: '農場直連：枋山果農的一天',
     date: '2026年3月28日',
     excerpt: '聽聽在烈日下守護紅寶石的職人們，如何堅持不催熟的完熟哲學。',
-    image: 'https://picsum.photos/seed/farm-orchard/1000/560',
+    image: '/images/hero-fruit.jpg',
     content: [
       { type: 'paragraph', text: '屏東枋山的清晨，當多數人還在睡夢中時，果農阿成已經在巡視他的芒果園。這裡的人堅持「在枝頭紅透」，哪怕產期會延後、風險會增加。' },
       { type: 'paragraph', text: '「催熟的果心帶酸，只有自然熟成的，甜度才能進到骨子裡。」阿成憨厚地笑著。在爆甜水果行，我們不只是買賣，我們是在傳遞這份對大地母親的敬畏與熱情。' },
