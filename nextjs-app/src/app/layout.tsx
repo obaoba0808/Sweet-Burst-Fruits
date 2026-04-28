@@ -21,6 +21,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://sweet-burst-fruits.vercel.app'),
   title: `${BRAND_NAME} - 極致甘甜 產地直達`,
   description: `${BRAND_NAME} - 嚴選高品質當季鮮果，產地直達您的餐桌。`,
   keywords: ['水果', '鮮果', '爆甜', '愛文芒果', '麝香葡萄', '草莓', '西瓜'],

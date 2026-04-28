@@ -3,32 +3,60 @@
 import React from 'react';
 import Link from 'next/link';
 import { Product } from '@/lib/types';
+import { useCart } from './CartProvider';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+  };
+
   return (
-    <Link href={`/products/${product.id}`} className="group flex flex-col gap-6 cursor-pointer">
-      <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#EBE7DE]">
+    <Link 
+      href={`/products/${product.id}`} 
+      className="group block bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+    >
+      {/* 產品圖片區 */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden">
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110 sepia-[0.1]"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-[#1A2E1A]/0 group-hover:bg-[#1A2E1A]/5 transition-colors duration-500 flex items-center justify-center">
-          <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-            <span className="bg-[#D97706] text-white px-8 py-3 rounded-full text-sm uppercase tracking-widest font-bold shadow-lg">
-              查看詳情
-            </span>
-          </div>
-        </div>
       </div>
-      <div className="text-center">
-        <p className="text-xs font-bold text-[#D97706] mb-2 tracking-widest uppercase">{product.category}</p>
-        <h3 className="text-2xl font-serif font-bold text-[#1A2E1A] mb-2 group-hover:text-[#D97706] transition-colors">{product.name}</h3>
-        <span className="text-lg font-bold text-[#1A2E1A] block">NT$ {product.price}</span>
+
+      {/* 底部文字區 */}
+      <div className="p-4 relative">
+        {/* 產品名稱 */}
+        <h3 className="text-lg font-bold text-gray-900 mb-1 truncate">
+          {product.name}
+        </h3>
+        
+        {/* 簡短描述 */}
+        <p className="text-sm text-gray-500 truncate mb-2">
+          {product.tagline}
+        </p>
+        
+        {/* 價格 */}
+        <span className="text-lg font-bold" style={{ color: '#F97316' }}>
+          NT$ {product.price}
+        </span>
+
+        {/* 購物車按鈕 */}
+        <button
+          onClick={handleAddToCart}
+          className="absolute bottom-4 right-4 w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors duration-200 shadow-md hover:shadow-lg"
+          aria-label="加入購物車"
+        >
+          🛒
+        </button>
       </div>
     </Link>
   );
