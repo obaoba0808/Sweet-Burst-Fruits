@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sweet-burst-fruits.vercel.app/sitemap.xml
+Sitemap: https://obaoba0808.github.io/Sweet-Burst-Fruits/sitemap.xml
