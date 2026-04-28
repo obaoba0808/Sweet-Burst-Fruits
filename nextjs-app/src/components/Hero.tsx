@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
     <section className="relative w-full h-screen min-h-[800px] overflow-hidden bg-[#2D5A27]">
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=2000"
+          src="https://picsum.photos/seed/hero-fruits/2000/1333"
           alt="Fresh vibrant fruits"
           className="w-full h-full object-cover brightness-[0.85] contrast-[1.1] animate-[pulse_20s_ease-in-out_infinite_alternate]"
         />

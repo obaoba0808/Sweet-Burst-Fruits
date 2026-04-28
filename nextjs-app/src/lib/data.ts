@@ -18,10 +18,10 @@ export const PRODUCTS: Product[] = [
     category: '嚴選進口',
     origin: '日本長野縣',
     weight: '單盒約600g',
-    imageUrl: 'https://images.unsplash.com/photo-1625493403040-3023223f063a?auto=format&fit=crop&q=80&w=1000',
+    imageUrl: 'https://picsum.photos/seed/muscat-grape/1000/1250',
     gallery: [
-      'https://images.unsplash.com/photo-1625493403040-3023223f063a?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1596364776417-fe905384ea43?auto=format&fit=crop&q=80&w=1000'
+      'https://picsum.photos/seed/muscat-grape-1/1000/1250',
+      'https://picsum.photos/seed/muscat-grape-2/1000/1250'
     ],
     features: ['產地空運直達', '糖度18度以上', '無籽可連皮']
   },
@@ -35,10 +35,10 @@ export const PRODUCTS: Product[] = [
     category: '當季熱銷',
     origin: '台灣屏東枋山',
     weight: '每箱5台斤(約8-10顆)',
-    imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=1000',
+    imageUrl: 'https://picsum.photos/seed/mango-fruit/1000/1250',
     gallery: [
-      'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1591073113125-e46713c829ed?auto=format&fit=crop&q=80&w=1000'
+      'https://picsum.photos/seed/mango-fruit-1/1000/1250',
+      'https://picsum.photos/seed/mango-fruit-2/1000/1250'
     ],
     features: ['產地直送', '外銷等級', '自然完熟']
   },
@@ -52,10 +52,10 @@ export const PRODUCTS: Product[] = [
     category: '禮盒推薦',
     origin: '日本熊本縣',
     weight: '2盤/箱',
-    imageUrl: 'https://images.unsplash.com/photo-1543528176-61b2395143a4?auto=format&fit=crop&q=80&w=1000',
+    imageUrl: 'https://picsum.photos/seed/strawberry-box/1000/1250',
     gallery: [
-      'https://images.unsplash.com/photo-1543528176-61b2395143a4?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&q=80&w=1000'
+      'https://picsum.photos/seed/strawberry-box-1/1000/1250',
+      'https://picsum.photos/seed/strawberry-box-2/1000/1250'
     ],
     features: ['手採嚴選', '禮盒包裝', '濃郁果香']
   },
@@ -69,10 +69,10 @@ export const PRODUCTS: Product[] = [
     category: '在地優質',
     origin: '台灣宜蘭',
     weight: '約15-18台斤',
-    imageUrl: 'https://images.unsplash.com/photo-1589606795096-724391624c9c?auto=format&fit=crop&q=80&w=1000',
+    imageUrl: 'https://picsum.photos/seed/watermelon-slice/1000/1250',
     gallery: [
-      'https://images.unsplash.com/photo-1589606795096-724391624c9c?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1589984662646-e7b2e4962f18?auto=format&fit=crop&q=80&w=1000'
+      'https://picsum.photos/seed/watermelon-slice-1/1000/1250',
+      'https://picsum.photos/seed/watermelon-slice-2/1000/1250'
     ],
     features: ['產地直達', '保證沙甜', '一株一果']
   }
@@ -84,9 +84,9 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     title: '如何挑選最甜的蜜柑？',
     date: '2026年4月12日',
     excerpt: '教你從外皮、蒂頭與重量，一眼看出多汁飽滿的頂級鮮果。',
-    image: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://picsum.photos/seed/citrus-tangerine/1000/560',
     content: [
-      { type: 'paragraph', text: '在爆甜水果行，我們每天都要與成千上萬的果實打交道。很多人問我們，挑選水果有什麼秘訣？其實，果實會自己說話。' },
+      { type: 'paragraph', text: '在爆甜水果行，我們每天都要與成千上萬的果實打交道。很多人問我們，挑選水果有什麼秘诀？其實，果實會自己說話。' },
       { type: 'paragraph', text: '以蜜柑為例，外皮的細緻程度反映了水分的飽和感。蒂頭若是凹矮且帶有朝氣的深綠色，代表它是緩緩熟成而非催熟。最重要的一點——沉甸甸的手感，那是飽滿果汁的保證。' },
       { type: 'blockquote', text: '「好的水果，是陽光、雨水與農人熱情的結晶。」' },
       { type: 'paragraph', text: '我們走遍台灣各地，深入日本產區，只為了找出那顆能讓您在那一瞬間，感受到生命律動與自然的贈禮。挑選，是我們對品質唯一的堅持。' }
@@ -97,7 +97,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     title: '農場直連：枋山果農的一天',
     date: '2026年3月28日',
     excerpt: '聽聽在烈日下守護紅寶石的職人們，如何堅持不催熟的完熟哲學。',
-    image: 'https://images.unsplash.com/photo-1528605248644-14dd04cb220d?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://picsum.photos/seed/farm-orchard/1000/560',
     content: [
       { type: 'paragraph', text: '屏東枋山的清晨，當多數人還在睡夢中時，果農阿成已經在巡視他的芒果園。這裡的人堅持「在枝頭紅透」，哪怕產期會延後、風險會增加。' },
       { type: 'paragraph', text: '「催熟的果心帶酸，只有自然熟成的，甜度才能進到骨子裡。」阿成憨厚地笑著。在爆甜水果行，我們不只是買賣，我們是在傳遞這份對大地母親的敬畏與熱情。' },

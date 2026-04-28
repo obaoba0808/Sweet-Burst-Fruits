@@ -10,7 +10,7 @@ const PROMOTIONS = [
     subtitle: '屏東枋山愛文芒果，限時 88 折優惠',
     discount: '88折',
     bgColor: 'bg-orange-500',
-    image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=1000'
+    image: 'https://picsum.photos/seed/mango-promo/1000/1000'
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const PROMOTIONS = [
     subtitle: '日本空運麝香葡萄，滿 3000 現折 300',
     discount: '現折$300',
     bgColor: 'bg-green-700',
-    image: 'https://images.unsplash.com/photo-1537084642907-629340c7e59c?auto=format&fit=crop&q=80&w=1000'
+    image: 'https://picsum.photos/seed/muscat-promo/1000/1000'
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const PROMOTIONS = [
     subtitle: '新會員首單滿 $1000，即贈嚴選水果禮盒乙份',
     discount: '新客好禮',
     bgColor: 'bg-red-600',
-    image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&q=80&w=1000'
+    image: 'https://picsum.photos/seed/gift-promo/1000/1000'
   }
 ];
 
