@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -81,13 +81,13 @@
                     </div>
                 </div>
 
-                <a href="#" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-orange-200">
+                <a href="#products" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-lg shadow-orange-200">
                     立即選購 <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
-            <!-- 圖片區 -->
+            <!-- 圖片區 - 水果拼盤 -->
             <div class="lg:w-1/2 mt-12 lg:mt-0 relative">
-                <img src="https://images.unsplash.com/photo-1610832958506-aa56338406cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fruit" class="rounded-3xl shadow-2xl relative z-10">
+                <img src="images/hero-fruits.png" alt="新鮮水果拼盤" class="rounded-3xl shadow-2xl relative z-10 w-full">
                 <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-orange-100 rounded-full -z-0"></div>
                 <div class="absolute -top-6 -left-6 w-32 h-32 bg-green-100 rounded-full -z-0"></div>
             </div>
@@ -125,7 +125,7 @@
     </section>
 
     <!-- 熱銷推薦 Product Grid -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div class="flex justify-between items-end mb-10">
             <div>
                 <h3 class="text-green-600 font-bold flex items-center mb-2">
@@ -136,58 +136,13 @@
             <a href="#" class="text-gray-400 hover:text-orange-500 transition text-sm font-medium">查看更多 <i class="fas fa-chevron-right ml-1"></i></a>
         </div>
 
-        <!-- 商品列表 - 12種水果 -->
+        <!-- 商品列表 - 4種主打水果 -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             
-            <!-- 商品 1: 巨峰葡萄 -->
+            <!-- 商品 1: 愛文芒果 -->
             <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
                 <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1537640538966-79f369b41e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="巨峰葡萄" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">巨峰葡萄</h4>
-                <p class="text-gray-400 text-sm mb-4">果粒飽滿 · 酸甜多汁</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 599 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 2: 紅心火龍果 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1527325678964-54921661f888?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="紅心火龍果" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">紅心火龍果</h4>
-                <p class="text-gray-400 text-sm mb-4">鮮甜多汁 · 營養豐富</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 399 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 3: 榴槤 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1587387119725-9d6bac0f22fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="榴槤" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">榴槤</h4>
-                <p class="text-gray-400 text-sm mb-4">香氣濃郁 · 綿密香甜</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 899 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 4: 愛文芒果 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1591073113125-e46713c829ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="愛文芒果" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="images/mango.png" alt="愛文芒果" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 </div>
                 <h4 class="font-bold text-gray-800 text-lg">愛文芒果</h4>
                 <p class="text-gray-400 text-sm mb-4">香甜多汁 · 台灣在地</p>
@@ -199,58 +154,13 @@
                 </div>
             </div>
 
-            <!-- 商品 5: 哈密瓜 -->
+            <!-- 商品 2: 大湖草莓 -->
             <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
                 <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1571575173700-afb9492e6a50?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="哈密瓜" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="images/strawberry.png" alt="大湖草莓" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 </div>
-                <h4 class="font-bold text-gray-800 text-lg">哈密瓜</h4>
-                <p class="text-gray-400 text-sm mb-4">香甜多汁 · 清爽可口</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 499 <span class="text-gray-400 text-xs font-normal">/ 顆</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 6: 櫻桃 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1528821128474-27f963b062bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="櫻桃" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">櫻桃</h4>
-                <p class="text-gray-400 text-sm mb-4">鮮紅飽滿 · 酸甜多汁</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 799 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 7: 酪梨 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="酪梨" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">酪梨</h4>
-                <p class="text-gray-400 text-sm mb-4">綿密細緻 · 營養豐富</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 299 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 8: 水蜜桃 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1629753250291-979952613877?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="水蜜桃" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">水蜜桃</h4>
-                <p class="text-gray-400 text-sm mb-4">香甜多汁 · 果肉細緻</p>
+                <h4 class="font-bold text-gray-800 text-lg">大湖草莓</h4>
+                <p class="text-gray-400 text-sm mb-4">鮮紅飽滿 · 香甜可口</p>
                 <div class="flex justify-between items-center">
                     <p class="text-orange-500 font-bold text-xl">NT$ 599 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
                     <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
@@ -259,60 +169,30 @@
                 </div>
             </div>
 
-            <!-- 商品 9: 奇異果 -->
+            <!-- 商品 3: 麝香葡萄 -->
             <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
                 <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1585059895524-72359e06138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="奇異果" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="images/grape.png" alt="麝香葡萄" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 </div>
-                <h4 class="font-bold text-gray-800 text-lg">奇異果</h4>
-                <p class="text-gray-400 text-sm mb-4">酸甜可口 · 營養滿分</p>
+                <h4 class="font-bold text-gray-800 text-lg">麝香葡萄</h4>
+                <p class="text-gray-400 text-sm mb-4">皮薄多汁 · 香氣濃郁</p>
                 <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 399 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
+                    <p class="text-orange-500 font-bold text-xl">NT$ 799 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
                     <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
                         <i class="fas fa-cart-plus"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- 商品 10: 金鑽鳳梨 -->
+            <!-- 商品 4: 金鑽鳳梨 -->
             <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
                 <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="金鑽鳳梨" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="images/pineapple.png" alt="金鑽鳳梨" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 </div>
                 <h4 class="font-bold text-gray-800 text-lg">金鑽鳳梨</h4>
                 <p class="text-gray-400 text-sm mb-4">香甜不刺舌 · 台灣嚴選</p>
                 <div class="flex justify-between items-center">
                     <p class="text-orange-500 font-bold text-xl">NT$ 499 <span class="text-gray-400 text-xs font-normal">/ 顆</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 11: 藍莓 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="藍莓" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">藍莓</h4>
-                <p class="text-gray-400 text-sm mb-4">小巧多汁 · 營養豐富</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 459 <span class="text-gray-400 text-xs font-normal">/ 盒</span></p>
-                    <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 商品 12: 木瓜 -->
-            <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-shadow group">
-                <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 relative aspect-square">
-                    <img src="https://images.unsplash.com/photo-1617112848923-ccef2e6cf092?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="木瓜" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <h4 class="font-bold text-gray-800 text-lg">木瓜</h4>
-                <p class="text-gray-400 text-sm mb-4">香甜綿密 · 助消化</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-orange-500 font-bold text-xl">NT$ 299 <span class="text-gray-400 text-xs font-normal">/ 顆</span></p>
                     <button class="bg-orange-500 text-white w-10 h-10 rounded-full hover:bg-orange-600 transition shadow-md shadow-orange-100">
                         <i class="fas fa-cart-plus"></i>
                     </button>
