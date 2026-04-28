@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-[#D97706]">探索</h4>
           <ul className="space-y-3">
-            <li><Link href="/" className="text-[#A8A29E] hover:text-white transition-colors">鮮果商城</Link></li>
+            <li><Link href="/products" className="text-[#A8A29E] hover:text-white transition-colors">鮮果商城</Link></li>
             <li><Link href="/about" className="text-[#A8A29E] hover:text-white transition-colors">關於我們</Link></li>
             <li><Link href="/journal" className="text-[#A8A29E] hover:text-white transition-colors">美味誌</Link></li>
           </ul>
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           <ul className="space-y-3">
             <li><span className="text-[#A8A29E]">配送說明</span></li>
             <li><span className="text-[#A8A29E]">退換貨政策</span></li>
-            <li><span className="text-[#A8A29E]">常見問題</span></li>
+            <li><Link href="/journal" className="text-[#A8A29E] hover:text-white transition-colors">常見問題</Link></li>
           </ul>
         </div>
 
@@ -57,8 +57,8 @@ const Footer: React.FC = () => {
       <div className="max-w-[1800px] mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-[#A8A29E] text-sm">© 2026 {BRAND_NAME}. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href="#" className="text-[#A8A29E] hover:text-white transition-colors text-sm">隱私權政策</a>
-          <a href="#" className="text-[#A8A29E] hover:text-white transition-colors text-sm">使用條款</a>
+          <Link href="/journal" className="text-[#A8A29E] hover:text-white transition-colors text-sm">隱私權政策</Link>
+          <Link href="/journal" className="text-[#A8A29E] hover:text-white transition-colors text-sm">使用條款</Link>
         </div>
       </div>
     </footer>

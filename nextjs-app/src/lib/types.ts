@@ -10,7 +10,7 @@ export interface Product {
   description: string;
   longDescription?: string;
   price: number;
-  category: '當季熱銷' | '嚴選進口' | '禮盒推薦' | '在地優質';
+  category: '當季熱銷' | '當季鮮果' | '禮盒精選' | '季节水果';
   imageUrl: string;
   gallery?: string[];
   features: string[];

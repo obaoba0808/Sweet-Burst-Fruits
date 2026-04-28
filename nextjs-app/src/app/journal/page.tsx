@@ -1,5 +1,11 @@
 import JournalSection from '@/components/Journal';
 import { BRAND_NAME } from '@/lib/data';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `${BRAND_NAME} 美味誌 - 鮮果知識與產地故事`,
+  description: '了解水果保存方法、認識台灣各產地故事與挑選技巧。所有內容由爆甜水果舖原創撰寫。',
+};
 
 export default function JournalListPage() {
   const jsonLd = {

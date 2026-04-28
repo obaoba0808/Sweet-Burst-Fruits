@@ -1,9 +1,11 @@
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
+import Promotions from '@/components/Promotions';
 import ProductGrid from '@/components/ProductGrid';
 import About from '@/components/About';
 import Journal from '@/components/Journal';
-import { BRAND_NAME, PRODUCTS, JOURNAL_ARTICLES } from '@/lib/data';
+import { BRAND_NAME } from '@/lib/data';
+
+const BASE_URL = 'https://obaoba0808.github.io/Sweet-Burst-Fruits';
 
 export default function HomePage() {
   const jsonLd = {
@@ -11,30 +13,34 @@ export default function HomePage() {
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': 'https://sweet-burst-fruits.vercel.app/#website',
-        url: 'https://sweet-burst-fruits.vercel.app',
+        '@id': `${BASE_URL}/#website`,
+        url: BASE_URL,
         name: BRAND_NAME,
         description: '嚴選高品質當季鮮果，產地直達您的餐桌。',
+        publisher: { '@id': `${BASE_URL}/#organization` },
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://sweet-burst-fruits.vercel.app/products/{search_term_string}',
+          target: `${BASE_URL}/products?q={search_term_string}`,
           'query-input': 'required name=search_term_string',
         },
       },
       {
         '@type': 'LocalBusiness',
-        '@id': 'https://sweet-burst-fruits.vercel.app/#business',
+        '@id': `${BASE_URL}/#organization`,
         name: BRAND_NAME,
-        description: '嚴選高品質當季鮮果，產地直達。',
-        url: 'https://sweet-burst-fruits.vercel.app',
-        telephone: '+886-2-12345678',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: '台北市',
-          addressCountry: 'TW',
-        },
+        description: '嚴選高品質當季鮮果，產地直達',
+        url: BASE_URL,
+        telephone: '+886-2-2345-6789',
+        address: { '@type': 'PostalAddress', addressLocality: '台北', addressCountry: 'TW' },
         priceRange: '$$',
-        image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=1200',
+        image: `${BASE_URL}/images/hero-fruits.jpg`,
+        sameAs: [],
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '09:00',
+          closes: '21:00',
+        },
       },
     ],
   };
@@ -43,7 +49,7 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
-      <Features />
+      <Promotions />
       <ProductGrid />
       <About />
       <Journal />
