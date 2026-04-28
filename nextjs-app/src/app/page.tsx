@@ -47,8 +47,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* DEBUG: v2 - remove after confirming deployment */}
-      <div style={{position:'fixed',top:0,left:0,background:'red',color:'white',padding:'4px 12px',zIndex:99999,fontSize:'14px'}}>✅ DEPLOY v2 - 04/29</div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
       <Promotions />
