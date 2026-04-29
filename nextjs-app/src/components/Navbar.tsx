@@ -9,10 +9,8 @@ import { useCart } from './CartProvider';
 const navLinks = [
   { href: '/', label: '首頁' },
   { href: '/products', label: '所有商品' },
-  { href: '/hot', label: '熱銷推薦' },
-  { href: '/gift-box', label: '水果禮盒' },
-  { href: '/origin', label: '產地故事' },
-  { href: '/contact', label: '聯絡我們' },
+  { href: '/about', label: '關於我們' },
+  { href: '/journal', label: '美味誌' },
 ];
 
 const Navbar: React.FC = () => {
@@ -106,7 +104,7 @@ const Navbar: React.FC = () => {
 
               {/* Cart Icon with Badge */}
               <Link
-                href="/cart"
+                href="/checkout"
                 className="relative p-2 text-gray-600 hover:text-orange-500 transition-colors"
                 aria-label="購物車"
               >
@@ -205,7 +203,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Bottom Bar */}
         <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between">
           <Link
-            href="/cart"
+            href="/checkout"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-500"
           >
@@ -223,7 +221,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           <Link
-            href="/account"
+            href="/about"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-500"
           >
@@ -232,7 +230,7 @@ const Navbar: React.FC = () => {
               <path strokeLinecap="round" strokeLinejoin="round"
                 d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
             </svg>
-            會員中心
+            關於我們
           </Link>
         </div>
       </div>
