@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '/Sweet-Burst-Fruits',
   images: {
     unoptimized: true,
   },
