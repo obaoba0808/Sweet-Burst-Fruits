@@ -1,5 +1,5 @@
 import Hero from '@/components/Hero';
-import Promotions from '@/components/Promotions';
+import Features from '@/components/Features';
 import ProductGrid from '@/components/ProductGrid';
 import About from '@/components/About';
 import Journal from '@/components/Journal';
@@ -49,7 +49,7 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
-      <Promotions />
+      <Features />
       <ProductGrid />
       <About />
       <Journal />

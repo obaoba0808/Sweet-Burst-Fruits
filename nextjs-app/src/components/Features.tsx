@@ -23,22 +23,22 @@ export default function Features() {
   ];
 
   return (
-    <section className="py-16 px-6">
-      <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className={`flex items-center gap-4 p-6 rounded-2xl shadow-sm ${feature.bgColor}`}
+              className={`flex items-center gap-4 p-5 md:p-6 rounded-xl ${feature.bgColor}`}
             >
-              <span className="text-5xl shrink-0 leading-none" role="img" aria-label={feature.title}>
+              <span className="text-4xl shrink-0 leading-none" role="img" aria-label={feature.title}>
                 {feature.icon}
               </span>
               <div>
-                <h3 className="text-lg font-bold text-gray-800 leading-snug">
+                <h3 className="text-base md:text-lg font-bold text-gray-800 leading-snug">
                   {feature.title}
                 </h3>
-                <p className="mt-1 text-sm text-gray-500">{feature.description}</p>
+                <p className="mt-0.5 text-xs md:text-sm text-gray-500">{feature.description}</p>
               </div>
             </div>
           ))}
