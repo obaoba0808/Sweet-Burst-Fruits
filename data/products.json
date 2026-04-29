@@ -1,0 +1,82 @@
+[
+  {
+    "id": "watermelon",
+    "name": "爆甜大西瓜",
+    "cat": "summer",
+    "price": 399,
+    "unit": "顆",
+    "img": "watermelon.png",
+    "tag": "消暑熱賣",
+    "desc": "多汁清甜，家庭聚會首選。"
+  },
+  {
+    "id": "dragonfruit",
+    "name": "紅心火龍果",
+    "cat": "daily",
+    "price": 289,
+    "unit": "盒",
+    "img": "dragonfruit.png",
+    "tag": "鮮豔多汁",
+    "desc": "果肉細緻，日常水果補給。"
+  },
+  {
+    "id": "apple",
+    "name": "香甜富士蘋果",
+    "cat": "daily",
+    "price": 320,
+    "unit": "盒",
+    "img": "apple.png",
+    "tag": "家庭常備",
+    "desc": "清脆爽口，長輩小孩都愛。"
+  },
+  {
+    "id": "orange",
+    "name": "鮮採香橙",
+    "cat": "daily",
+    "price": 299,
+    "unit": "盒",
+    "img": "orange.png",
+    "tag": "高人氣",
+    "desc": "酸甜平衡，果香濃郁。"
+  },
+  {
+    "id": "pineapple",
+    "name": "金鑽鳳梨",
+    "cat": "summer",
+    "price": 259,
+    "unit": "顆",
+    "img": "pineapple.png",
+    "tag": "產地直送",
+    "desc": "香氣足、纖維細，切盤好吃。"
+  },
+  {
+    "id": "grape",
+    "name": "無籽青葡萄",
+    "cat": "gift",
+    "price": 499,
+    "unit": "盒",
+    "img": "grape.png",
+    "tag": "送禮推薦",
+    "desc": "顆顆飽滿，冰鎮更好吃。"
+  },
+  {
+    "id": "strawberry",
+    "name": "鮮紅草莓",
+    "cat": "gift",
+    "price": 450,
+    "unit": "盒",
+    "img": "strawberry.png",
+    "tag": "甜點首選",
+    "desc": "香甜漂亮，送禮拍照都適合。"
+  },
+  {
+    "id": "mango",
+    "name": "愛文芒果",
+    "cat": "summer",
+    "price": 520,
+    "unit": "盒",
+    "img": "mango.png",
+    "tag": "夏季爆款",
+    "desc": "濃郁香甜，入口綿密。"
+  }
+]
