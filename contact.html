@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>聯絡我們｜爆甜水果鋪</title>
+<meta name="description" content="爆甜水果鋪，新鮮水果產地直送">
+<meta property="og:title" content="聯絡我們｜爆甜水果鋪">
+<meta property="og:description" content="爆甜水果鋪，新鮮水果產地直送">
+<meta property="og:image" content="./images/hero.jpg">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<div class="top-promo">🔥 今日限定：滿 NT$1,200 免運｜LINE 下單再送當季水果小盒</div>
+<header class="header">
+  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>爆甜水果鋪</h1><p>新鮮・天然・爆甜</p></div></a>
+  <nav class="nav">
+    <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
+  </nav>
+  <div class="actions">
+    <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
+    <div class="icon" onclick="toast('會員功能可串接登入與訂單查詢')">👤</div>
+    <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
+  </div>
+</header>
+
+
+<section class="page-hero"><img src="./images/blueberry.jpg" alt=""><div><h2>聯絡我們</h2><p>大量訂購、禮盒客製、配送問題都可以詢問</p></div></section>
+<main class="container">
+  <div class="contact-wrap">
+    <div class="box"><h3>客服資訊</h3><p>📞 電話：02-1234-5678</p><p>💬 LINE：@sweetfruit</p><p>✉️ Email：service@sweetfruit.com</p><p>🚚 配送：台灣本島宅配</p></div>
+    <form class="box form" onsubmit="event.preventDefault();toast('已收到你的訊息，客服會盡快聯絡你')"><h3>線上詢問</h3><input placeholder="姓名" required><input placeholder="電話 / LINE ID" required><select><option>一般詢問</option><option>禮盒客製</option><option>公司團購</option><option>配送問題</option></select><textarea placeholder="請輸入需求，例如：水果品項、數量、配送日期、預算"></textarea><button class="btn btn-primary">送出詢問</button></form>
+  </div>
+</main>
+
+
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="total" id="cartTotal">總計 NT$ 0</div>
+  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">前往結帳</button>
+  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速下單</button>
+</aside>
+<a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
+<div class="toast" id="toast"></div>
+
+
+<footer>
+  <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
+  <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
+  <div><h3>服務說明</h3><a>滿額免運</a><a>宅配到府</a><a>大量採購</a></div>
+  <div><h3>聯絡方式</h3><a>LINE：@sweetfruit</a><a>電話：02-1234-5678</a><a>Email：service@sweetfruit.com</a></div>
+</footer>
+<div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
+
+<script src="./js/app.js"></script>
+</body>
+</html>

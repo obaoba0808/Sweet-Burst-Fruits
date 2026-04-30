@@ -1,26 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>結帳｜爆甜水果鋪</title>
+<meta name="description" content="爆甜水果鋪，新鮮水果產地直送">
+<meta property="og:title" content="結帳｜爆甜水果鋪">
+<meta property="og:description" content="爆甜水果鋪，新鮮水果產地直送">
+<meta property="og:image" content="./images/hero.jpg">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
 
-const products=[
-{id:1,name:'愛文芒果',desc:'香甜多汁・台灣在地',price:699,cat:'芒果',hot:true,img:'./images/p1-mango.jpg'},
-{id:2,name:'大湖草莓',desc:'鮮紅飽滿・香甜可口',price:599,cat:'莓果',hot:true,img:'./images/p2-strawberry.jpg'},
-{id:3,name:'麝香葡萄',desc:'皮薄多汁・香氣濃郁',price:799,cat:'葡萄',hot:true,img:'./images/p3-grape.jpg'},
-{id:4,name:'金鑽鳳梨',desc:'香甜不刺舌・台灣嚴選',price:499,cat:'鳳梨',hot:true,img:'./images/p4-pineapple.jpg'},
-{id:5,name:'青森蘋果',desc:'爽脆香甜・大顆漂亮',price:899,cat:'水果',hot:false,img:'./images/apple.jpg'},
-{id:6,name:'奇異果家庭盒',desc:'酸甜均衡・日常補給',price:520,cat:'水果',hot:false,img:'./images/kiwi.jpg'},
-{id:7,name:'綜合水果禮盒',desc:'節慶送禮・精美包裝',price:1280,cat:'禮盒',hot:true,img:'./images/gift.jpg'},
-{id:8,name:'家庭水果箱',desc:'一週份量・全家共享',price:1099,cat:'禮盒',hot:true,img:'./images/family.jpg'}
-];
-let cart=JSON.parse(localStorage.getItem('cart')||'[]');
-const money=n=>'NT$ '+n.toLocaleString();
-function card(p){return `<article class="card"><img src="${p.img}" alt="${p.name}"><div class="info"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)} <small>/ 份</small></div></div><button class="buy" onclick="addCart(${p.id})">🛒</button></article>`}
-function renderProducts(list=products,target='productGrid'){const el=document.getElementById(target);if(el)el.innerHTML=list.map(card).join('')}
-function renderHome(){renderProducts(products.filter(p=>p.hot).slice(0,4),'homeHot')}
-function filterProducts(cat,btn){document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderProducts(cat==='全部'?products:products.filter(p=>p.cat.includes(cat)||p.name.includes(cat)))}
-function searchProducts(q){q=q.trim();renderProducts(products.filter(p=>!q||p.name.includes(q)||p.desc.includes(q)||p.cat.includes(q)))}
-function addCart(id){const p=products.find(x=>x.id===id);const item=cart.find(x=>x.id===id);item?item.qty++:cart.push({...p,qty:1});save();toast('已加入購物車：'+p.name)}
-function save(){localStorage.setItem('cart',JSON.stringify(cart));updateCart()}
-function updateCart(){const count=document.getElementById('cartCount');if(count)count.textContent=cart.reduce((s,i)=>s+i.qty,0);const items=document.getElementById('cartItems');if(items)items.innerHTML=cart.length?cart.map(i=>`<div class="cart-item"><img src="${i.img}"><div><b>${i.name}</b><small>${money(i.price)}</small></div><div class="qty"><button onclick="changeQty(${i.id},-1)">-</button> ${i.qty} <button onclick="changeQty(${i.id},1)">+</button></div></div>`).join(''):'<p style="color:#777">購物車目前是空的</p>';const total=document.getElementById('cartTotal');if(total)total.textContent='總計 '+money(cart.reduce((s,i)=>s+i.price*i.qty,0))}
-function changeQty(id,n){const item=cart.find(i=>i.id===id);if(!item)return;item.qty+=n;if(item.qty<=0)cart=cart.filter(i=>i.id!==id);save()}
-function toggleCart(){document.getElementById('cartPanel').classList.toggle('open')}
-function checkout(){if(!cart.length)return toast('請先加入商品');location.href='./checkout.html'}
-function toast(t){const el=document.getElementById('toast');if(!el)return alert(t);el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
-document.addEventListener('DOMContentLoaded',()=>{renderHome();renderProducts();renderProducts(products.filter(p=>p.hot),'hotGrid');renderProducts(products.filter(p=>p.cat==='禮盒'),'giftGrid');updateCart();});
+<div class="top-promo">🔥 今日限定：滿 NT$1,200 免運｜LINE 下單再送當季水果小盒</div>
+<header class="header">
+  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>爆甜水果鋪</h1><p>新鮮・天然・爆甜</p></div></a>
+  <nav class="nav">
+    <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
+  </nav>
+  <div class="actions">
+    <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
+    <div class="icon" onclick="toast('會員功能可串接登入與訂單查詢')">👤</div>
+    <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
+  </div>
+</header>
+
+
+<section class="page-hero"><img src="./images/melon.jpg" alt=""><div><h2>結帳頁</h2><p>已預留金流、LINE通知、n8n自動化串接位置</p></div></section>
+<main class="container">
+  <div class="contact-wrap">
+    <form class="box form" onsubmit="event.preventDefault();toast('訂單已送出示範，可串接金流正式收款')"><h3>收件資料</h3><input placeholder="收件人姓名" required><input placeholder="手機" required><input placeholder="配送地址" required><select><option>宅配到府</option><option>公司團購</option><option>禮盒大量配送</option></select><textarea placeholder="備註，例如希望到貨日期、禮盒需求"></textarea><button class="btn btn-primary">送出訂單</button></form>
+    <div class="box"><h3>商用串接位置</h3><p>✅ 購物車資料已存在瀏覽器 localStorage</p><p>✅ 可串接綠界 / 藍新 / LINE Pay</p><p>✅ 可串接 n8n：訂單 → LINE通知 → Google Sheet → 出貨流程</p><button class="btn btn-light" onclick="lineOrder()">改用 LINE 下單</button></div>
+  </div>
+</main>
+
+
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="total" id="cartTotal">總計 NT$ 0</div>
+  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">前往結帳</button>
+  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速下單</button>
+</aside>
+<a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
+<div class="toast" id="toast"></div>
+
+
+<footer>
+  <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
+  <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
+  <div><h3>服務說明</h3><a>滿額免運</a><a>宅配到府</a><a>大量採購</a></div>
+  <div><h3>聯絡方式</h3><a>LINE：@sweetfruit</a><a>電話：02-1234-5678</a><a>Email：service@sweetfruit.com</a></div>
+</footer>
+<div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
+
+<script src="./js/app.js"></script>
+</body>
+</html>
