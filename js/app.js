@@ -101,7 +101,10 @@ function startCountdown(){
     els[2].textContent=String(sec%60).padStart(2,'0');
   },1000);
 }
+function toggleMobileNav(){document.querySelector('.nav').classList.toggle('open')}
+function closeMobileNav(){document.querySelector('.nav').classList.remove('open')}
 document.addEventListener('DOMContentLoaded',()=>{
   const qs=new URLSearchParams(location.search); const s=qs.get('search');
   init(); if(s) searchProducts(s);
+  document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',closeMobileNav));
 });

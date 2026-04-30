@@ -1,55 +1,55 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>產地故事｜爆甜水果鋪</title>
-<meta name="description" content="爆甜水果鋪，新鮮水果產地直送">
-<meta property="og:title" content="產地故事｜爆甜水果鋪">
-<meta property="og:description" content="爆甜水果鋪，新鮮水果產地直送">
+<title>?�地?��?｜�??�水?�鋪</title>
+<meta name="description" content="?��?水�??��??�鮮水�??�地?��?>
+<meta property="og:title" content="?�地?��?｜�??�水?�鋪">
+<meta property="og:description" content="?��?水�??��??�鮮水�??�地?��?>
 <meta property="og:image" content="./images/hero.jpg">
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-<div class="top-promo">🔥 今日限定：滿 NT$1,200 免運｜LINE 下單再送當季水果小盒</div>
+<div class="top-promo">?�� 今日?��?：滿 NT$1,200 ?��?｜LINE 下單?�送當�?��?��???/div>
 <header class="header">
-  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>爆甜水果鋪</h1><p>新鮮・天然・爆甜</p></div></a>
+  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>?��?水�???/h1><p>?�鮮?�天?�・?��?</p></div></a>
   <nav class="nav">
-    <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./weekly-box.html">一週水果箱</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
+    <a href="./index.html">首�?</a><a href="./products.html">?�?��???/a><a href="./weekly-box.html">一?�水?�箱</a><a href="./hot.html">?�銷?�薦</a><a href="./gift.html">水�?禮�?</a><a href="./story.html">?�地?��?</a><a href="./contact.html">?�絡?��?/a>
   </nav>
-  <div class="actions">
-    <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
-    <div class="icon" onclick="toast('會員功能可串接登入與訂單查詢')">👤</div>
-    <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
+  <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button><div class="actions">
+    <label class="search"><input placeholder="?��?水�?..." oninput="searchProducts(this.value)"></label>
+    <div class="icon" onclick="toast('?�員?�能?�串?�登?��?訂單?�詢')">?��</div>
+    <div class="icon" onclick="toggleCart()">??<em class="badge" id="cartCount">0</em></div>
   </div>
 </header>
 
 
-<section class="page-hero banner-full"><img src="./images/banner-story.png" alt="產地故事"><div><h2>產地故事</h2><p>從果園到餐桌，每一口都新鮮安心</p></div></section>
+<section class="page-hero banner-full"><img src="./images/banner-local-farm.png" alt="?�地?��?"><div><h2>?�地?��?</h2><p>從�??�到餐�?，�?一??��?�鮮安�?</p></div></section>
 <main class="container">
-  <div class="story-box"><img src="./images/dragonfruit.jpg" alt="產地水果"><div><h3>嚴選當季水果</h3><p>我們主打當季水果與產地直送，減少中間等待時間，讓水果以更好的熟度與口感送到你手上。</p><p>每批水果依外觀、成熟度、香氣與新鮮度挑選，適合家庭日常、公司下午茶與節慶送禮。</p></div></div>
+  <div class="story-box"><img src="./images/dragonfruit.jpg" alt="?�地水�?"><div><h3>?�選?�季水�?</h3><p>?�們主?�當�?��?��??�地?�送�?減�?中�?等�??��?，�?水�?以更好�??�度?�口?�送到你�?上�?/p><p>每批水�?依�?觀?��??�度?��?�???�鮮度�??��??��?家庭?�常?�公?��??�茶?��??�送禮??/p></div></div>
 </main>
 
 
 <aside class="cart-panel" id="cartPanel">
-  <div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
+  <div class="cart-head"><h3>?��?購物�?/h3><button class="close" onclick="toggleCart()">?</button></div>
   <div class="cart-items" id="cartItems"></div>
-  <div class="total" id="cartTotal">總計 NT$ 0</div>
-  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">前往結帳</button>
-  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速下單</button>
+  <div class="total" id="cartTotal">總�? NT$ 0</div>
+  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">?��?結帳</button>
+  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速�???/button>
 </aside>
-<a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
+<a class="line-fixed" onclick="lineOrder()">?�� LINE 快速�???/a>
 <div class="toast" id="toast"></div>
 
 
 <footer>
-  <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
-  <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
-  <div><h3>服務說明</h3><a>滿額免運</a><a>宅配到府</a><a>大量採購</a></div>
-  <div><h3>聯絡方式</h3><a>LINE：@938nzmjr</a><a>電話：0926-656666</a><a>Email：ilohas6868@gmail.com</a></div>
+  <div><h3>?��?水�???/h3><p>主�??�地?�送、當�?��鮮、家庭水?�箱?��??�禮?�。適?�日常�?給、公?��?購、送禮?�購??/p></div>
+  <div><h3>?��??��?</h3><a href="./products.html">?�部水�?</a><a href="./hot.html">?�銷?�薦</a><a href="./gift.html">水�?禮�?</a></div>
+  <div><h3>?��?說�?</h3><a>滿�??��?</a><a>宅�??��?</a><a>大�??�購</a></div>
+  <div><h3>?�絡?��?</h3><a>LINE：@938nzmjr</a><a>?�話�?926-656666</a><a>Email：ilohas6868@gmail.com</a></div>
 </footer>
-<div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
+<div class="copyright">© 2026 ?��?水�???Sweet Burst Fruits. All Rights Reserved.</div>
 
 <script src="./js/app.js"></script>
 </body>

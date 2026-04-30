@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
@@ -18,7 +18,7 @@
   <nav class="nav">
     <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./weekly-box.html">一週水果箱</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
   </nav>
-  <div class="actions">
+  <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button><div class="actions">
     <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
     <div class="icon" onclick="toast('會員功能可串接登入與訂單查詢')">👤</div>
     <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
