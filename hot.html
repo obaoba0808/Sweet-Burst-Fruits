@@ -1,13 +1,38 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>熱銷推薦｜爆甜水果鋪</title>
-<meta name="description" content="爆甜水果鋪，新鮮水果產地直送">
-<meta property="og:title" content="熱銷推薦｜爆甜水果鋪">
-<meta property="og:description" content="爆甜水果鋪，新鮮水果產地直送">
-<meta property="og:image" content="./images/hero.jpg">
+<title>熱銷推薦｜爆甜水果鋪 — 回購率最高的當季人氣水果</title>
+<meta name="description" content="爆甜水果鋪熱銷排行榜，愛文芒果、金鑽鳳梨、巨峰葡萄、櫻桃等回購率最高的人氣水果。顧客好評推薦，產地直送品質保證。">
+<meta name="keywords" content="熱銷水果,芒果推薦,鳳梨推薦,葡萄推薦,人氣水果,水果評價,回購最多">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/hot.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="熱銷推薦｜爆甜水果鋪 — 回購率最高的人氣水果">
+<meta property="og:description" content="愛文芒果、金鑽鳳梨、巨峰葡萄、櫻桃等顧客最愛水果，回購率最高、好評不斷。">
+<meta property="og:url" content="https://obaoba0808.github.io/Sweet-Burst-Fruits/hot.html">
+<meta property="og:site_name" content="爆甜水果鋪 Sweet Burst Fruits">
+<meta property="og:image" content="https://obaoba0808.github.io/Sweet-Burst-Fruits/images/banner-hot.png">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="熱銷推薦｜爆甜水果鋪 — 回購率最高的人氣水果">
+<meta name="twitter:description" content="愛文芒果、金鑽鳳梨、巨峰葡萄、櫻桃等顧客最愛水果，回購率最高、好評不斷。">
+<meta name="twitter:image" content="https://obaoba0808.github.io/Sweet-Burst-Fruits/images/banner-hot.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "爆甜水果鋪熱銷推薦",
+  "description": "回購率最高、顧客最愛的當季人氣水果排行榜。",
+  "url": "https://obaoba0808.github.io/Sweet-Burst-Fruits/hot.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "爆甜水果鋪",
+    "url": "https://obaoba0808.github.io/Sweet-Burst-Fruits/"
+  }
+}
+</script>
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -25,10 +50,17 @@
   </div>
 </header>
 
-
-<section class="page-hero banner-full"><img src="./images/banner-hot.png" alt="熱銷推薦"><div><h2>熱銷推薦</h2><p>顧客最常回購的人氣水果</p></div></section>
-<main class="container"><div class="grid" id="hotGrid"></div></main>
-
+<section class="page-hero banner-full"><img src="./images/banner-hot.png" alt="爆甜水果鋪熱銷推薦，回購率最高的當季人氣水果" loading="lazy"><div><h2>熱銷推薦</h2><p>回購率最高，顧客最愛</p></div></section>
+<main class="container">
+  <div class="grid" id="hotGrid"></div>
+  <noscript>
+    <div class="grid">
+      <div class="card"><img src="./images/mango.jpg" alt="愛文芒果-香氣濃郁果肉細緻-熱銷推薦" loading="lazy"><div class="card-body"><span class="tag">爆甜</span><h3>愛文芒果</h3><p>香氣濃郁・果肉細緻・人氣熱賣</p><div class="price">NT$699 <s>NT$880</s></div></div></div>
+      <div class="card"><img src="./images/pineapple.jpg" alt="金鑽鳳梨-香甜不咬舌-熱銷推薦" loading="lazy"><div class="card-body"><span class="tag">回購</span><h3>金鑽鳳梨</h3><p>香甜不咬舌・台灣嚴選</p><div class="price">NT$499 <s>NT$650</s></div></div></div>
+      <div class="card"><img src="./images/grape.jpg" alt="巨峰葡萄-皮薄多汁濃郁果香-熱銷推薦" loading="lazy"><div class="card-body"><span class="tag">人氣</span><h3>巨峰葡萄</h3><p>皮薄多汁・濃郁果香</p><div class="price">NT$799 <s>NT$980</s></div></div></div>
+    </div>
+  </noscript>
+</main>
 
 <aside class="cart-panel" id="cartPanel">
   <div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
@@ -40,12 +72,11 @@
 <a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
 <div class="toast" id="toast"></div>
 
-
 <footer>
   <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
   <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
-  <div><h3>服務說明</h3><a>滿額免運</a><a>宅配到府</a><a>大量採購</a></div>
-  <div><h3>聯絡方式</h3><a>LINE：@938nzmjr</a><a>電話：0926-656666</a><a>Email：ilohas6868@gmail.com</a></div>
+  <div><h3>服務說明</h3><a href="./weekly-box.html">一週水果箱</a><a href="./contact.html">配送說明</a><a href="./gift.html">企業團購</a></div>
+  <div><h3>聯絡方式</h3><a href="https://line.me/R/ti/p/@938nzmjr" target="_blank">LINE：@938nzmjr</a><a href="tel:0926656666">電話：0926-656666</a><a href="mailto:ilohas6868@gmail.com">Email：ilohas6868@gmail.com</a></div>
 </footer>
 <div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
 
