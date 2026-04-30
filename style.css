@@ -1,0 +1,29 @@
+# Sweet-Burst-Fruits GitHub Pages 完整上線版
+
+## 上傳方法
+1. 解壓縮這個 ZIP
+2. 進入 GitHub repo：Sweet-Burst-Fruits
+3. 刪掉舊檔案
+4. 把本資料夾裡的所有檔案與資料夾完整上傳到 repo 根目錄
+5. 等 GitHub Pages 重新部署完成
+
+## 正確結構
+index.html
+products.html
+hot.html
+gift.html
+story.html
+contact.html
+checkout.html
+css/style.css
+js/app.js
+images/*.jpg
+images/*.svg
+.nojekyll
+
+## 已修正
+- GitHub Pages 子路徑問題
+- ./images 相對路徑
+- Console 404 缺少的 JPG 檔名
+- 手機版響應式
+- 購物車、搜尋、分類、結帳示範頁
