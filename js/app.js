@@ -75,11 +75,14 @@ function checkout(){
   location.href='./checkout.html';
 }
 function lineOrder(){
-  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const text=cart.length
-    ? '您好，我想下單：%0A' + cart.map(i=>`${i.name} x ${i.qty} = ${money(i.price*i.qty)}`).join('%0A') + `%0A總計：${money(total)}`
-    : '您好，我想詢問水果商品與配送';
-  window.open('https://line.me/R/msg/text/?'+text, '_blank');
+  window.open('https://line.me/R/ti/p/@938nzmjr', '_blank');
+}
+function addWeeklyBox(plan='standard'){
+  const weekly = {id: plan==='premium'?1000:999,name: plan==='premium'?'豪華一週家庭水果箱':'一週家庭水果箱',desc:'7天營養搭配・全家共享・新鮮直送',price: plan==='premium'?1680:999,old: plan==='premium'?2180:1399,cat:'水果箱',img:'./images/banner-weekly-box.png',tag:'一週份量'};
+  const item=cart.find(x=>x.id===weekly.id);
+  item ? item.qty++ : cart.push({...weekly,qty:1});
+  saveCart();
+  toast('已加入購物車：'+weekly.name);
 }
 function toast(t){
   const el=document.getElementById('toast');

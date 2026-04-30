@@ -29,3 +29,6 @@ images/
 
 ## 圖片
 全部使用 ./images/ 相對路徑，適合 GitHub Pages 子目錄部署。
+
+
+新增：weekly-box.html 一週家庭水果箱爆單頁，並已套用所有橫幅圖片與新聯絡資訊。

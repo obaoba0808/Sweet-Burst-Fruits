@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>一週家庭水果箱｜爆甜水果鋪</title>
+<meta name="description" content="爆甜水果鋪，新鮮水果產地直送">
+<meta property="og:title" content="首頁｜爆甜水果鋪">
+<meta property="og:description" content="爆甜水果鋪，新鮮水果產地直送">
+<meta property="og:image" content="./images/hero.jpg">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<div class="top-promo">🔥 今日限定：滿 NT$1,200 免運｜LINE 下單再送當季水果小盒</div>
+<header class="header">
+  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>爆甜水果鋪</h1><p>新鮮・天然・爆甜</p></div></a>
+  <nav class="nav">
+    <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./weekly-box.html">一週水果箱</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
+  </nav>
+  <div class="actions">
+    <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
+    <div class="icon" onclick="toast('會員功能可串接登入與訂單查詢')">👤</div>
+    <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
+  </div>
+</header>
+
+
+
+<section class="weekly-hero">
+  <div>
+    <h2>一週家庭水果箱<br>每天營養剛剛好</h2>
+    <p>專為家庭設計的 7 天水果搭配，一箱解決每天該吃什麼水果的煩惱。新鮮直送、份量剛好、全家共享。</p>
+    <div class="weekly-badges"><span>✅ 7天搭配</span><span>✅ 當季新鮮</span><span>✅ 全家共享</span><span>✅ LINE快速下單</span></div>
+    <button class="btn btn-primary" onclick="addWeeklyBox('standard')">立即訂購 NT$999</button>
+    <button class="btn btn-light" onclick="lineOrder()">LINE詢問搭配</button>
+  </div>
+  <img src="./images/banner-weekly-box.png" alt="一週家庭水果箱">
+</section>
+<main class="container">
+  <div class="section-head"><div><h2 class="section-title">📅 一週水果營養規劃</h2><p class="section-sub">每天不同水果，全家吃得均衡又方便</p></div></div>
+  <div class="plan-grid">
+    <div class="day-card"><h3>星期一｜清爽啟動</h3><p>香吉士＋藍莓<br>維生素C、抗氧化</p></div>
+    <div class="day-card"><h3>星期二｜消化順暢</h3><p>奇異果＋木瓜<br>膳食纖維、消化補給</p></div>
+    <div class="day-card"><h3>星期三｜活力補充</h3><p>愛文芒果＋葡萄<br>香甜能量、日常活力</p></div>
+    <div class="day-card"><h3>星期四｜清爽解膩</h3><p>鳳梨＋火龍果<br>清爽多汁、高纖維</p></div>
+    <div class="day-card"><h3>星期五｜甜美犒賞</h3><p>水蜜桃＋櫻桃<br>香甜口感、幸福感</p></div>
+    <div class="day-card"><h3>星期六｜輕盈健康</h3><p>哈密瓜＋酪梨<br>清甜飽足、好脂肪</p></div>
+    <div class="day-card"><h3>星期日｜全家共享</h3><p>綜合水果盤<br>親子共享、飯後點心</p></div>
+  </div>
+  <section class="combo">
+    <div><h2>🔥 本週限定｜家庭水果箱</h2><p>不用每天想要買什麼，直接幫你搭配好。適合家庭、辦公室、長輩水果補給。</p></div>
+    <button class="btn btn-light" onclick="addWeeklyBox('standard')">一鍵加入購物車</button>
+  </section>
+  <div class="offer-grid">
+    <div class="offer"><h3>標準家庭箱</h3><p>適合 2-3 人小家庭，一週水果日常補給。</p><div class="big-price">NT$999</div><ul><li>7天水果搭配</li><li>約 8-10 種當季水果</li><li>新鮮宅配到府</li><li>LINE客服可調整偏好</li></ul><button class="btn btn-primary" onclick="addWeeklyBox('standard')">加入購物車</button></div>
+    <div class="offer"><h3>豪華分享箱</h3><p>適合 4-6 人家庭、公司辦公室、送禮分享。</p><div class="big-price">NT$1,680</div><ul><li>份量升級</li><li>含高級水果搭配</li><li>適合親友共享</li><li>可客製禮盒包裝</li></ul><button class="btn btn-primary" onclick="addWeeklyBox('premium')">加入購物車</button></div>
+  </div>
+  <div class="section-head"><div><h2 class="section-title">🚚 下單流程</h2><p class="section-sub">簡單四步驟，新鮮送到家</p></div></div>
+  <div class="steps"><div class="step"><b>1</b>選擇水果箱</div><div class="step"><b>2</b>加入購物車</div><div class="step"><b>3</b>填寫配送資料</div><div class="step"><b>4</b>新鮮宅配到府</div></div>
+</main>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="total" id="cartTotal">總計 NT$ 0</div>
+  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">前往結帳</button>
+  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速下單</button>
+</aside>
+<a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
+<div class="toast" id="toast"></div>
+
+
+<footer>
+  <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
+  <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
+  <div><h3>服務說明</h3><a>滿額免運</a><a>宅配到府</a><a>大量採購</a></div>
+  <div><h3>聯絡方式</h3><a>LINE：@938nzmjr</a><a>電話：0926-656666</a><a>Email：ilohas6868@gmail.com</a></div>
+</footer>
+<div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
+
+<script src="./js/app.js"></script>
+</body>
+</html>
