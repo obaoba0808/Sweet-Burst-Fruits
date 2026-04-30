@@ -1,58 +1,58 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>結帳｜爆甜水果鋪</title>
-<meta name="description" content="爆甜水果鋪，新鮮水果產地直送">
-<meta property="og:title" content="結帳｜爆甜水果鋪">
-<meta property="og:description" content="爆甜水果鋪，新鮮水果產地直送">
+<title>蝯董嚚??偌?</title>
+<meta name="description" content="??瘞湔??迎??圈悅瘞湔??Ｗ?湧?>
+<meta property="og:title" content="蝯董嚚??偌?">
+<meta property="og:description" content="??瘞湔??迎??圈悅瘞湔??Ｗ?湧?>
 <meta property="og:image" content="./images/hero.jpg">
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-<div class="top-promo">🔥 今日限定：滿 NT$1,200 免運｜LINE 下單再送當季水果小盒</div>
+<div class="top-promo">? 隞??嚗遛 NT$1,200 ??嚚INE 銝?摮?偌????/div>
 <header class="header">
-  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>爆甜水果鋪</h1><p>新鮮・天然・爆甜</p></div></a>
+  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>??瘞湔???/h1><p>?圈悅?餃予?嗚??</p></div></a>
   <nav class="nav">
-    <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
+    <a href="./index.html">擐?</a><a href="./products.html">?????/a><a href="./hot.html">?梢?刻</a><a href="./gift.html">瘞湔?蝳桃?</a><a href="./story.html">?Ｗ??</a><a href="./contact.html">?舐窗??/a>
   </nav>
   <div class="actions">
-    <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
-    <div class="icon" onclick="toast('會員功能可串接登入與訂單查詢')">👤</div>
-    <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
+    <label class="search"><input placeholder="??瘞湔?..." oninput="searchProducts(this.value)"></label>
+    <div class="icon" onclick="toast('???臭葡?亦?亥?閮?亥岷')">?</div>
+    <div class="icon" onclick="toggleCart()">??<em class="badge" id="cartCount">0</em></div>
   </div>
 </header>
 
 
-<section class="page-hero"><img src="./images/melon.jpg" alt=""><div><h2>結帳頁</h2><p>已預留金流、LINE通知、n8n自動化串接位置</p></div></section>
+<section class="page-hero"><img src="./images/melon.jpg" alt=""><div><h2>蝯董??/h2><p>撌脤???瘚INE??8n?芸??葡?乩?蝵?/p></div></section>
 <main class="container">
   <div class="contact-wrap">
-    <form class="box form" onsubmit="event.preventDefault();toast('訂單已送出示範，可串接金流正式收款')"><h3>收件資料</h3><input placeholder="收件人姓名" required><input placeholder="手機" required><input placeholder="配送地址" required><select><option>宅配到府</option><option>公司團購</option><option>禮盒大量配送</option></select><textarea placeholder="備註，例如希望到貨日期、禮盒需求"></textarea><button class="btn btn-primary">送出訂單</button></form>
-    <div class="box"><h3>商用串接位置</h3><p>✅ 購物車資料已存在瀏覽器 localStorage</p><p>✅ 可串接綠界 / 藍新 / LINE Pay</p><p>✅ 可串接 n8n：訂單 → LINE通知 → Google Sheet → 出貨流程</p><button class="btn btn-light" onclick="lineOrder()">改用 LINE 下單</button></div>
+    <form class="box form" onsubmit="event.preventDefault();toast('閮撌脤蝷箇?嚗銝脫??甇???嗆狡')"><h3>?嗡辣鞈?</h3><input placeholder="?嗡辣鈭箏??? required><input placeholder="??" required><input placeholder="??" required><select><option>摰??啣?</option><option>?砍?頃</option><option>蝳桃?憭折???/option></select><textarea placeholder="?酉嚗?憒??鞎冽?旨??瘙?></textarea><button class="btn btn-primary">?閮</button></form>
+    <div class="box"><h3>?銝脫雿蔭</h3><p>??鞈潛頠??歇摮?汗??localStorage</p><p>???臭葡?亦???/ ? / LINE Pay</p><p>???臭葡??n8n嚗?????LINE? ??Google Sheet ???箄疏瘚?</p><button class="btn btn-light" onclick="lineOrder()">?寧 LINE 銝</button></div>
   </div>
 </main>
 
 
 <aside class="cart-panel" id="cartPanel">
-  <div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
+  <div class="cart-head"><h3>??鞈潛頠?/h3><button class="close" onclick="toggleCart()">?</button></div>
   <div class="cart-items" id="cartItems"></div>
-  <div class="total" id="cartTotal">總計 NT$ 0</div>
-  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">前往結帳</button>
-  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速下單</button>
+  <div class="total" id="cartTotal">蝮質? NT$ 0</div>
+  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">??蝯董</button>
+  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 敹恍???/button>
 </aside>
-<a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
+<a class="line-fixed" onclick="lineOrder()">? LINE 敹恍???/a>
 <div class="toast" id="toast"></div>
 
 
 <footer>
-  <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
-  <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
-  <div><h3>服務說明</h3><a>滿額免運</a><a>宅配到府</a><a>大量採購</a></div>
-  <div><h3>聯絡方式</h3><a>LINE：@sweetfruit</a><a>電話：02-1234-5678</a><a>Email：service@sweetfruit.com</a></div>
+  <div><h3>??瘞湔???/h3><p>銝餅??Ｗ?湧摮?擙柴振摨剜偌?拳???嗥旨??撣貉?蝯艾?詨?鞈潦旨?∟頃??/p></div>
+  <div><h3>????</h3><a href="./products.html">?券瘞湔?</a><a href="./hot.html">?梢?刻</a><a href="./gift.html">瘞湔?蝳桃?</a></div>
+  <div><h3>??隤芣?</h3><a>皛輸???</a><a>摰??啣?</a><a>憭折??∟頃</a></div>
+  <div><h3>?舐窗?孵?</h3><a>LINE嚗sweetfruit</a><a>?餉店嚗?2-1234-5678</a><a>Email嚗ervice@sweetfruit.com</a></div>
 </footer>
-<div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
+<div class="copyright">穢 2026 ??瘞湔???Sweet Burst Fruits. All Rights Reserved.</div>
 
 <script src="./js/app.js"></script>
 </body>
