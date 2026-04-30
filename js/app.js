@@ -1,9 +1,26 @@
-const PRODUCTS=[{"id": "watermelon", "name": "爆甜大西瓜", "cat": "summer", "price": 399, "unit": "顆", "img": "watermelon.png", "tag": "消暑熱賣", "desc": "多汁清甜，家庭聚會首選。"}, {"id": "dragonfruit", "name": "紅心火龍果", "cat": "daily", "price": 289, "unit": "盒", "img": "dragonfruit.png", "tag": "鮮豔多汁", "desc": "果肉細緻，日常水果補給。"}, {"id": "apple", "name": "香甜富士蘋果", "cat": "daily", "price": 320, "unit": "盒", "img": "apple.png", "tag": "家庭常備", "desc": "清脆爽口，長輩小孩都愛。"}, {"id": "orange", "name": "鮮採香橙", "cat": "daily", "price": 299, "unit": "盒", "img": "orange.png", "tag": "高人氣", "desc": "酸甜平衡，果香濃郁。"}, {"id": "pineapple", "name": "金鑽鳳梨", "cat": "summer", "price": 259, "unit": "顆", "img": "pineapple.png", "tag": "產地直送", "desc": "香氣足、纖維細，切盤好吃。"}, {"id": "grape", "name": "無籽青葡萄", "cat": "gift", "price": 499, "unit": "盒", "img": "grape.png", "tag": "送禮推薦", "desc": "顆顆飽滿，冰鎮更好吃。"}, {"id": "strawberry", "name": "鮮紅草莓", "cat": "gift", "price": 450, "unit": "盒", "img": "strawberry.png", "tag": "甜點首選", "desc": "香甜漂亮，送禮拍照都適合。"}, {"id": "mango", "name": "愛文芒果", "cat": "summer", "price": 520, "unit": "盒", "img": "mango.png", "tag": "夏季爆款", "desc": "濃郁香甜，入口綿密。"}];let cart=JSON.parse(localStorage.getItem('fruitCart')||'{}');let current='all';function money(n){return 'NT$'+n.toLocaleString('zh-TW')}function renderProducts(){const g=document.getElementById('productGrid');g.innerHTML=PRODUCTS.filter(p=>current==='all'||p.cat===current).map(p=>`<article class="card"><span class="badge">${p.tag}</span><img src="images/${p.img}" alt="${p.name}"><h3>${p.name}</h3><p>${p.desc}</p><div class="card-foot"><div><div class="price">${money(p.price)}</div><small> / ${p.unit}</small></div><button class="add" onclick="addCart('${p.id}')">加入購物車</button></div></article>`).join('')}function filterProducts(cat,el){current=cat;document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderProducts()}function save(){localStorage.setItem('fruitCart',JSON.stringify(cart));renderCart()}function addCart(id){cart[id]=(cart[id]||0)+1;save();toast('已加入購物車')}function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];save()}function renderCart(){const items=document.getElementById('cartItems');const ids=Object.keys(cart);document.getElementById('cartCount').textContent=ids.reduce((s,id)=>s+cart[id],0);let total=0;items.innerHTML=ids.length?ids.map(id=>{const p=PRODUCTS.find(x=>x.id===id);total+=p.price*cart[id];return `<div class="cart-item"><img src="images/${p.img}"><div style="flex:1"><b>${p.name}</b><div>${money(p.price)} / ${p.unit}</div><div class="qty"><button onclick="changeQty('${id}',-1)">-</button><span>${cart[id]}</span><button onclick="changeQty('${id}',1)">+</button></div></div></div>`}).join(''):'<p>購物車目前是空的。</p>';document.getElementById('cartTotal').textContent='總計 '+money(total)}function toggleCart(){document.getElementById('cart').classList.toggle('open')}function checkout(){const ids=Object.keys(cart);if(!ids.length)return toast('請先加入商品');let text='您好，我想訂購：
-';let total=0;ids.forEach(id=>{const p=PRODUCTS.find(x=>x.id===id);total+=p.price*cart[id];text+=`- ${p.name} x ${cart[id]}，${money(p.price*cart[id])}
-`});text+=`
-總計：${money(total)}
-姓名：
-電話：
-地址：`;navigator.clipboard?.writeText(text);toast('訂單訊息已複製，可貼到 LINE')}function submitLead(e){e.preventDefault();const msg=`詢問人：${name.value}
-電話/LINE：${phone.value}
-需求：${note.value}`;navigator.clipboard?.writeText(msg);toast('詢問內容已複製，請貼到 LINE 或客服系統')}function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}renderProducts();renderCart();
+
+const products=[
+{id:1,name:'愛文芒果',desc:'香甜多汁・台灣在地',price:699,cat:'芒果',hot:true,img:'./images/mango.svg'},
+{id:2,name:'大湖草莓',desc:'鮮紅飽滿・香甜可口',price:599,cat:'莓果',hot:true,img:'./images/strawberry.svg'},
+{id:3,name:'麝香葡萄',desc:'皮薄多汁・香氣濃郁',price:799,cat:'葡萄',hot:true,img:'./images/grape.svg'},
+{id:4,name:'金鑽鳳梨',desc:'香甜不刺舌・台灣嚴選',price:499,cat:'鳳梨',hot:true,img:'./images/pineapple.svg'},
+{id:5,name:'青森蘋果',desc:'爽脆香甜・大顆漂亮',price:899,cat:'水果',hot:false,img:'./images/apple.svg'},
+{id:6,name:'奇異果家庭盒',desc:'酸甜均衡・日常補給',price:520,cat:'水果',hot:false,img:'./images/kiwi.svg'},
+{id:7,name:'綜合水果禮盒',desc:'節慶送禮・精美包裝',price:1280,cat:'禮盒',hot:true,img:'./images/gift.svg'},
+{id:8,name:'家庭水果箱',desc:'一週份量・全家共享',price:1099,cat:'禮盒',hot:true,img:'./images/family.svg'}
+];
+let cart=JSON.parse(localStorage.getItem('cart')||'[]');
+const money=n=>'NT$ '+n.toLocaleString();
+function card(p){return `<article class="card"><img src="${p.img}" alt="${p.name}"><div class="info"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)} <small>/ 份</small></div></div><button class="buy" onclick="addCart(${p.id})">🛒</button></article>`}
+function renderProducts(list=products,target='productGrid'){const el=document.getElementById(target);if(el)el.innerHTML=list.map(card).join('')}
+function renderHome(){renderProducts(products.filter(p=>p.hot).slice(0,4),'homeHot')}
+function filterProducts(cat,btn){document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderProducts(cat==='全部'?products:products.filter(p=>p.cat.includes(cat)||p.name.includes(cat)))}
+function searchProducts(q){q=q.trim();renderProducts(products.filter(p=>!q||p.name.includes(q)||p.desc.includes(q)||p.cat.includes(q)))}
+function addCart(id){const p=products.find(x=>x.id===id);const item=cart.find(x=>x.id===id);item?item.qty++:cart.push({...p,qty:1});save();toast('已加入購物車：'+p.name)}
+function save(){localStorage.setItem('cart',JSON.stringify(cart));updateCart()}
+function updateCart(){const count=document.getElementById('cartCount');if(count)count.textContent=cart.reduce((s,i)=>s+i.qty,0);const items=document.getElementById('cartItems');if(items)items.innerHTML=cart.length?cart.map(i=>`<div class="cart-item"><img src="${i.img}"><div><b>${i.name}</b><small>${money(i.price)}</small></div><div class="qty"><button onclick="changeQty(${i.id},-1)">-</button> ${i.qty} <button onclick="changeQty(${i.id},1)">+</button></div></div>`).join(''):'<p style="color:#777">購物車目前是空的</p>';const total=document.getElementById('cartTotal');if(total)total.textContent='總計 '+money(cart.reduce((s,i)=>s+i.price*i.qty,0))}
+function changeQty(id,n){const item=cart.find(i=>i.id===id);if(!item)return;item.qty+=n;if(item.qty<=0)cart=cart.filter(i=>i.id!==id);save()}
+function toggleCart(){document.getElementById('cartPanel').classList.toggle('open')}
+function checkout(){if(!cart.length)return toast('請先加入商品');location.href='checkout.html'}
+function toast(t){const el=document.getElementById('toast');if(!el)return alert(t);el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+document.addEventListener('DOMContentLoaded',()=>{renderHome();renderProducts();renderProducts(products.filter(p=>p.hot),'hotGrid');renderProducts(products.filter(p=>p.cat==='禮盒'),'giftGrid');updateCart();});
