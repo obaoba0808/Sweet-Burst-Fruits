@@ -75,6 +75,25 @@ img{max-width:100%;display:block}
 .story-box img{height:360px;width:100%;object-fit:cover;border-radius:22px}
 .story-box h3{font-size:34px;font-weight:900;margin-bottom:14px}
 .story-box p{line-height:2;color:#555;font-weight:700}
+.story-content{padding:50px 0;max-width:1200px;margin:0 auto}
+.story-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-bottom:50px}
+.story-card{background:#fff;border-radius:24px;padding:36px;box-shadow:0 8px 28px rgba(0,0,0,.08);transition:.3s}
+.story-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.story-icon{font-size:42px;margin-bottom:16px}
+.story-card h2{font-size:26px;font-weight:900;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.story-card p{line-height:1.9;color:#555;font-size:17px}
+.story-card.accent-green{border-left:5px solid #4caf50}
+.story-card.accent-green h2{color:#2e7d32}
+.story-card.accent-mango{border-left:5px solid #ff9800}
+.story-card.accent-mango h2{color:#e65100}
+.story-card.accent-farmer{border-left:5px solid #8d6e63}
+.story-card.accent-farmer h2{color:#5d4037}
+.story-card.accent-delivery{border-left:5px solid #2196f3}
+.story-card.accent-delivery h2{color:#1565c0}
+.story-step{font-weight:900;font-size:20px;color:#333;margin:16px 0;letter-spacing:1px}
+.story-cta{background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:28px;padding:48px;text-align:center;margin-top:40px}
+.story-cta h2{font-size:28px;font-weight:900;margin-bottom:24px;color:#222}
+.cta-row{display:flex;gap:16px;justify-content:center}
 .contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:26px}
 .box{background:#fff;border-radius:24px;padding:30px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
 .box h3{font-size:28px;font-weight:900;margin-bottom:15px}
