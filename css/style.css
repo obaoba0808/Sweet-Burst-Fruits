@@ -129,3 +129,50 @@ footer p,footer a{color:#bbb;line-height:2;display:block}
 .step b{display:grid;place-items:center;width:46px;height:46px;background:var(--orange);color:#fff;border-radius:50%;margin:0 auto 10px}
 @media(max-width:1050px){.weekly-hero,.offer-grid{grid-template-columns:1fr}.plan-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.weekly-hero{padding:24px 16px}.weekly-hero h2{font-size:34px}.plan-grid,.steps{grid-template-columns:1fr}.banner-full{height:auto}.banner-full img{height:auto}}
+
+/* ── FAQ 美化區塊 ── */
+.faq-section{background:#fffaf3;padding:52px 46px;border-radius:32px;margin:44px 0;box-shadow:0 8px 36px rgba(0,0,0,.07)}
+.faq-header{display:flex;align-items:center;gap:18px;margin-bottom:36px}
+.faq-header-icon{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,#ff7a00,#ffb703);display:grid;place-items:center;font-size:30px;box-shadow:0 8px 22px rgba(255,122,0,.28)}
+.faq-header h2{font-size:30px;font-weight:900;color:#191919}
+.faq-header p{color:#888;font-weight:800;margin-top:4px}
+.faq-list{display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.07);transition:.22s;border:1.5px solid #f0e6db;cursor:pointer}
+.faq-item:hover{box-shadow:0 8px 28px rgba(255,122,0,.16);border-color:#ffd1ad}
+.faq-item[open]{border-color:var(--orange)}
+.faq-item summary{list-style:none;display:flex;align-items:center;gap:16px;padding:20px 24px;font-size:18px;font-weight:900;color:#222;transition:.2s;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-q{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#ff7a00,#ffb703);color:#fff;font-size:15px;font-weight:900;display:grid;place-items:center;flex-shrink:0;transition:.22s}
+.faq-item[open] .faq-q{background:linear-gradient(135deg,#d94f00,#ff7a00);transform:rotate(8deg)}
+.faq-arrow{width:26px;height:26px;border-radius:50%;background:#f7f7f7;display:grid;place-items:center;margin-left:auto;font-size:16px;color:#888;transition:.3s;flex-shrink:0}
+.faq-item[open] .faq-arrow{background:var(--orange);color:#fff;transform:rotate(180deg)}
+.faq-body{padding:0 24px 22px 80px;color:#555;line-height:1.9;font-weight:700;font-size:16px;border-top:1px solid #f0f0f0;margin-top:-2px;padding-top:18px}
+
+/* ── 水果箱方案卡 ── */
+.box-options{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:34px 0}
+.box-card{background:#fff;border-radius:28px;padding:34px;box-shadow:0 8px 28px rgba(0,0,0,.1);border:2px solid #f0e6db;position:relative;transition:.28s}
+.box-card:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(255,106,0,.2);border-color:#ffd1ad}
+.box-card.featured{background:linear-gradient(160deg,#fff7ed,#ffe8cc);border-color:var(--orange);box-shadow:0 14px 40px rgba(255,106,0,.22)}
+.box-card.featured:hover{box-shadow:0 22px 56px rgba(255,106,0,.3)}
+.box-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#ff7a00,#ffb703);color:#fff;border-radius:999px;padding:8px 22px;font-size:13px;font-weight:900;white-space:nowrap;box-shadow:0 6px 16px rgba(255,122,0,.3)}
+.box-card h3{font-size:26px;font-weight:900;margin:12px 0 8px;color:#222}
+.box-card.featured h3{color:var(--orange)}
+.box-price{font-size:17px;color:#888;font-weight:800;margin-bottom:8px}
+.box-price b{font-size:42px;color:var(--orange);font-weight:900;line-height:1}
+.box-card.featured .box-price b{color:#d94f00}
+.box-price small{margin-left:4px;font-size:15px}
+.box-card p{color:#666;font-weight:800;margin-bottom:16px;font-size:15px}
+.box-card ul{padding-left:22px;margin-bottom:22px;line-height:2.1}
+.box-card ul li{font-weight:800;color:#444;font-size:15px}
+.box-card .btn{width:100%;text-align:center}
+.box-intro{background:linear-gradient(120deg,#fff7ed,#ffe0b8);border-radius:28px;padding:36px 42px;margin:0 0 6px}
+.box-intro h2{font-size:28px;font-weight:900;color:var(--orange);margin-bottom:12px}
+.box-intro p{font-size:17px;font-weight:800;line-height:1.8;color:#444;max-width:680px}
+.box-faq{margin-top:10px}
+.box-faq h2{font-size:24px;font-weight:900;color:#222;margin-bottom:22px}
+.box-cta{background:linear-gradient(120deg,#ff7a00,#ffb703);border-radius:28px;padding:38px 44px;display:grid;grid-template-columns:1.2fr .6fr;gap:24px;align-items:center;margin:38px 0;color:#fff}
+.box-cta h2{font-size:32px;font-weight:900;margin-bottom:8px}
+.box-cta p{font-size:18px;font-weight:800;line-height:1.7;opacity:.9}
+.box-cta .btn{background:#fff;color:var(--orange);font-size:18px;padding:16px 32px;border-radius:999px;font-weight:900;box-shadow:0 10px 24px rgba(0,0,0,.18);cursor:pointer;border:0;white-space:nowrap;transition:.2s}
+.box-cta .btn:hover{transform:translateY(-2px)}
+@media(max-width:900px){.box-options{grid-template-columns:1fr}.box-cta{grid-template-columns:1fr}.faq-body{padding-left:24px}.faq-header{flex-direction:column;align-items:flex-start}}
