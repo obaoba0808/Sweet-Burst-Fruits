@@ -82,10 +82,10 @@ img{max-width:100%;display:block}
 .story-icon{font-size:42px;margin-bottom:16px}
 .story-card h2{font-size:26px;font-weight:900;margin-bottom:18px;display:flex;align-items:center;gap:12px;color:var(--orange)}
 .story-card p{line-height:1.9;color:#555;font-size:17px}
-.seasonal-grid{display:flex;flex-wrap:nowrap;gap:20px;margin-bottom:40px;overflow-x:auto;padding-bottom:16px}
-.seasonal-card{flex:0 0 320px;padding:26px}
-.seasonal-card h2{font-size:20px}
-.seasonal-card p{font-size:14px}
+.seasonal-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+.seasonal-card{padding:20px 28px}
+.seasonal-card h2{font-size:20px;margin-bottom:12px}
+.seasonal-card p{font-size:15px}
 .story-step{font-weight:900;font-size:20px;color:#333;margin:16px 0;letter-spacing:1px}
 .story-cta{background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:28px;padding:48px;text-align:center;margin-top:40px}
 .story-cta h2{font-size:28px;font-weight:900;margin-bottom:24px;color:#222}
