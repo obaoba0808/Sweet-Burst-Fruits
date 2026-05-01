@@ -1,6 +1,6 @@
 
 const gifts = [
-  {id: 'g1', name: '愛文芒果水果禮盒', desc: '9顆裝・香氣濃郁・果肉細緻', price: 1380, old: 1680, img: './images/mango.jpg', tag: '爆甜人氣'},
+  {id: 'g1', name: '愛文芒果水果禮盒', desc: '9顆裝・香氣濃郁・果肉細緻', price: 1380, old: 1680, img: './images/gift-mango.png', tag: '爆甜人氣'},
   {id: 'g2', name: '金鑽鳳梨禮盒', desc: '6顆裝・香甜不咬舌・台灣嚴選', price: 799, old: 999, img: './images/gift-pineapple.png', tag: '推薦'},
   {id: 'g3', name: '巨峰葡萄水果禮盒', desc: '4串裝・皮薄多汁・濃郁果香', price: 1280, old: 1580, img: './images/gift-grape.png', tag: '人氣'},
   {id: 'g4', name: '櫻桃水果禮盒', desc: '一盒裝・飽滿甜脆・送禮首選', price: 1280, old: 1580, img: './images/gift-cherry.png', tag: '高級'},
