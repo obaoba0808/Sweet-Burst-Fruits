@@ -50,7 +50,7 @@ img{max-width:100%;display:block}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 22px rgba(0,0,0,.1);position:relative;transition:.24s;border:1px solid #f0e6db}
 .card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(0,0,0,.15)}
-.card-img{height:190px;overflow:hidden;background:#fff}
+.card-img{height:auto;aspect-ratio:4/3;overflow:hidden;background:#fff}
 .card-img img{height:100%;width:100%;object-fit:cover;transition:.35s}
 .card:hover .card-img img{transform:scale(1.06)}
 .tag{position:absolute;left:14px;top:14px;background:rgba(255,106,0,.94);color:#fff;border-radius:999px;font-size:13px;font-weight:900;padding:6px 11px}
