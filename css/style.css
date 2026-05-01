@@ -176,3 +176,5 @@ footer p,footer a{color:#bbb;line-height:2;display:block}
 .box-cta .btn{background:#fff;color:var(--orange);font-size:18px;padding:16px 32px;border-radius:999px;font-weight:900;box-shadow:0 10px 24px rgba(0,0,0,.18);cursor:pointer;border:0;white-space:nowrap;transition:.2s}
 .box-cta .btn:hover{transform:translateY(-2px)}
 @media(max-width:900px){.box-options{grid-template-columns:1fr}.box-cta{grid-template-columns:1fr}.faq-body{padding-left:24px}.faq-header{flex-direction:column;align-items:flex-start}}
+
+.box-card-img{width:100%;height:200px;object-fit:cover;border-radius:18px;margin-bottom:18px;box-shadow:0 6px 20px rgba(0,0,0,.12)}
