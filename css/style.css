@@ -90,7 +90,23 @@ img{max-width:100%;display:block}
 .story-cta{background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:28px;padding:48px;text-align:center;margin-top:40px}
 .story-cta h2{font-size:28px;font-weight:900;margin-bottom:24px;color:#222}
 .cta-row{display:flex;gap:16px;justify-content:center}
-.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:26px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:44px 0}
+.contact-card{background:#fff;border-radius:24px;padding:32px;box-shadow:0 8px 28px rgba(0,0,0,.08);transition:.3s;text-align:center;border:2px solid transparent}
+.contact-card:hover{border-color:var(--orange);transform:translateY(-6px);box-shadow:0 16px 40px rgba(255,122,0,.18)}
+.contact-icon{font-size:48px;margin-bottom:20px}
+.contact-card h3{font-size:24px;font-weight:900;color:var(--orange);margin-bottom:14px}
+.contact-card p{color:#555;line-height:1.8;font-size:16px}
+.contact-detail{font-size:20px;font-weight:900;color:#222;margin:18px 0}
+.contact-card .btn{margin-top:18px}
+.shipping-info{background:#fffaf3;padding:40px;border-radius:28px;margin:44px 0;box-shadow:0 8px 36px rgba(0,0,0,.07)}
+.shipping-info h2{font-size:28px;font-weight:900;color:var(--orange);margin-bottom:26px}
+.shipping-details{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.shipping-item{background:#fff;padding:24px;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.shipping-item h3{font-size:18px;font-weight:900;color:var(--orange);margin-bottom:10px}
+.shipping-item p{color:#555;line-height:1.7;font-size:15px}
+.business-hours{text-align:center;padding:44px 0}
+.business-hours h2{font-size:28px;font-weight:900;color:var(--orange);margin-bottom:18px}
+.business-hours p{color:#555;line-height:1.9;font-size:17px}
 .box{background:#fff;border-radius:24px;padding:30px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
 .box h3{font-size:28px;font-weight:900;margin-bottom:15px}
 .box p{font-size:18px;font-weight:800;line-height:2}
