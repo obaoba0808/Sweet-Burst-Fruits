@@ -7,7 +7,8 @@
     "old": 880,
     "cat": "熱銷",
     "img": "./images/mango.jpg",
-    "tag": "爆甜"
+    "tag": "爆甜",
+    "shipId": ""
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "old": 650,
     "cat": "熱銷",
     "img": "./images/pineapple.jpg",
-    "tag": "回購"
+    "tag": "回購",
+    "shipId": ""
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "old": 980,
     "cat": "熱銷",
     "img": "./images/grape.jpg",
-    "tag": "人氣"
+    "tag": "人氣",
+    "shipId": ""
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "old": 520,
     "cat": "柑橘",
     "img": "./images/orange.jpg",
-    "tag": "多汁"
+    "tag": "多汁",
+    "shipId": ""
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "old": 650,
     "cat": "健康",
     "img": "./images/kiwi.jpg",
-    "tag": "健康"
+    "tag": "健康",
+    "shipId": ""
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "old": 590,
     "cat": "健康",
     "img": "./images/dragonfruit.jpg",
-    "tag": "鮮紅"
+    "tag": "鮮紅",
+    "shipId": ""
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "old": 760,
     "cat": "莓果",
     "img": "./images/blueberry.jpg",
-    "tag": "精選"
+    "tag": "精選",
+    "shipId": ""
   },
   {
     "id": 8,
@@ -77,7 +84,8 @@
     "old": 1180,
     "cat": "高級",
     "img": "./images/cherry.jpg",
-    "tag": "高級"
+    "tag": "高級",
+    "shipId": ""
   },
   {
     "id": 9,
@@ -87,7 +95,8 @@
     "old": 960,
     "cat": "高級",
     "img": "./images/peach.jpg",
-    "tag": "香甜"
+    "tag": "香甜",
+    "shipId": ""
   },
   {
     "id": 10,
@@ -97,7 +106,8 @@
     "old": 850,
     "cat": "瓜果",
     "img": "./images/melon.jpg",
-    "tag": "甜香"
+    "tag": "甜香",
+    "shipId": ""
   },
   {
     "id": 11,
@@ -107,7 +117,8 @@
     "old": 450,
     "cat": "瓜果",
     "img": "./images/papaya.jpg",
-    "tag": "當季"
+    "tag": "當季",
+    "shipId": ""
   },
   {
     "id": 12,
@@ -117,7 +128,8 @@
     "old": 550,
     "cat": "健康",
     "img": "./images/avocado.jpg",
-    "tag": "營養"
+    "tag": "營養",
+    "shipId": ""
   },
   {
     "id": 13,
@@ -127,6 +139,7 @@
     "old": 1580,
     "cat": "高級",
     "img": "./images/durian.jpg",
-    "tag": "限量"
+    "tag": "限量",
+    "shipId": ""
   }
 ]

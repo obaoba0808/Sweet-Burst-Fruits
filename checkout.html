@@ -9,10 +9,9 @@
 <link rel="alternate" hreflang="zh-Hant" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
 <link rel="alternate" hreflang="zh-TW" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
 <link rel="alternate" hreflang="x-default" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
-<link rel="alternate" hreflang="zh-Hant" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
-<link rel="alternate" hreflang="zh-TW" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
-<link rel="alternate" hreflang="x-default" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
 <link rel="stylesheet" href="./css/style.css">
+<!-- 7-11 門市選擇器 JS，請替換成賣貨便後台提供的專屬代碼 -->
+<script src="https://emmaproject.7-11.com.tw/emap.ashx?t=門市選擇器"></script>
 </head>
 <body>
 
@@ -29,7 +28,7 @@
   </div>
 </header>
 
-<section class="page-hero"><div><h2>結帳</h2><p>確認訂單並完成付款</p></div></section>
+<section class="page-hero"><div><h2>結帳</h2><p>確認訂單並選擇7-11取貨</p></div></section>
 <main class="container">
   <div id="checkoutForm">
     <section class="checkout-section">
@@ -41,16 +40,22 @@
       <h3>👤 收件資訊</h3>
       <div class="form-group"><label>姓名</label><input type="text" id="name" placeholder="請輸入收件人姓名"></div>
       <div class="form-group"><label>電話</label><input type="tel" id="phone" placeholder="請輸入聯絡電話"></div>
-      <div class="form-group"><label>配送地址</label><input type="text" id="address" placeholder="請輸入配送地址"></div>
+      <div class="form-group">
+        <label>取貨門市</label>
+        <button type="button" id="selectStoreBtn" onclick="openStoreSelector()" style="width:100%;padding:12px;background:#ff6b35;color:white;border:none;border-radius:8px;font-size:1rem;cursor:pointer;font-weight:bold;">選擇7-11取貨門市</button>
+        <div id="selectedStore" style="margin-top:8px;color:#333;font-size:0.95rem;padding:8px;background:#f5f5f5;border-radius:6px;display:none;"></div>
+        <input type="hidden" id="storeId">
+        <input type="hidden" id="storeName">
+      </div>
       <div class="form-group"><label>備註</label><textarea id="note" placeholder="特殊需求或指定配送時段（選填）"></textarea></div>
     </section>
     <section class="checkout-section">
       <h3>💳 付款方式</h3>
       <div class="payment-options">
-        <label class="payment-option"><input type="radio" name="payment" value="line" checked> LINE 轉帳</label>
-        <label class="payment-option"><input type="radio" name="payment" value="cash"> 貨到付款</label>
-        <label class="payment-option"><input type="radio" name="payment" value="transfer"> 銀行轉帳</label>
+        <label class="payment-option"><input type="radio" name="payment" value="cod" checked> 超商取貨付款</label>
+        <label class="payment-option"><input type="radio" name="payment" value="line"> LINE 轉帳</label>
       </div>
+      <p style="color:#666;font-size:0.9rem;margin-top:8px;">選擇超商取貨付款，將跳轉到7-11賣貨便完成付款</p>
     </section>
     <button class="btn btn-primary" onclick="submitOrder()" style="width:100%;padding:16px;font-size:1.1rem">確認送出訂單</button>
     <p class="checkout-note">💡 也可以透過 <a href="https://line.me/R/ti/p/@938nzmjr" target="_blank">LINE 快速下單</a>，我們會幫你處理所有細節！</p>
@@ -76,5 +81,78 @@
 <div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
 
 <script src="./js/app.js"></script>
+<script>
+// 7-11 門市選擇器回調，請根據賣貨便後台提供的文檔修改
+function openStoreSelector(){
+  // 賣貨便門市選擇器範例，請替換成實際代碼
+  // 商家後台可取得專屬的門市選擇器初始化代碼
+  if(typeof Emap === 'undefined'){
+    alert('請先替換成賣貨便後台提供的門市選擇器JS代碼');
+    return;
+  }
+  Emap.open({
+    onSelect: function(store){
+      document.getElementById('storeId').value = store.id;
+      document.getElementById('storeName').value = store.name;
+      const storeDiv = document.getElementById('selectedStore');
+      storeDiv.style.display = 'block';
+      storeDiv.innerHTML = `✅ 已選擇：${store.name}<br><small>門市編號：${store.id}</small>`;
+    }
+  });
+}
+
+// 提交訂單，跳轉賣貨便結帳頁
+function submitOrder(){
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const storeId = document.getElementById('storeId').value;
+  const storeName = document.getElementById('storeName').value;
+  const cart = JSON.parse(localStorage.getItem('sweetFruitCart') || '[]');
+  const note = document.getElementById('note').value.trim();
+  const payment = document.querySelector('input[name="payment"]:checked').value;
+  
+  if(!name) return toast('請輸入收件人姓名');
+  if(!phone) return toast('請輸入聯絡電話');
+  if(!storeId) return toast('請選擇取貨門市');
+  if(!cart.length) return toast('購物車是空的');
+  
+  // 計算總金額
+  const total = cart.reduce((s,i)=>s + i.price * i.qty, 0);
+  
+  // 賣貨便參數，請替換成你的商家編號
+  const merchantId = 'YOUR_MERCHANT_ID'; // ← 請修改成你的賣貨便商家編號
+  if(merchantId === 'YOUR_MERCHANT_ID'){
+    alert('請先修改 checkout.html 裡的 merchantId 為你的賣貨便商家編號');
+    return;
+  }
+  
+  // 拼接賣貨便結帳URL
+  let url = `https://myship.7-11.com.tw/checkout?merchant_id=${encodeURIComponent(merchantId)}`;
+  url += `&total=${encodeURIComponent(total)}`;
+  url += `&name=${encodeURIComponent(name)}`;
+  url += `&phone=${encodeURIComponent(phone)}`;
+  url += `&store_id=${encodeURIComponent(storeId)}`;
+  url += `&store_name=${encodeURIComponent(storeName)}`;
+  url += `&return_url=${encodeURIComponent('https://obaoba0808.github.io/Sweet-Burst-Fruits/thanks.html')}`;
+  url += `&note=${encodeURIComponent(note)}`;
+  url += `&payment=${encodeURIComponent(payment === 'cod' ? 'cod' : 'line')}`;
+  
+  // 加入商品參數（對應賣貨便商品ID）
+  cart.forEach((item, idx) => {
+    const shipId = item.shipId || item.id;
+    url += `&item${idx}_id=${encodeURIComponent(shipId)}`;
+    url += `&item${idx}_name=${encodeURIComponent(item.name)}`;
+    url += `&item${idx}_qty=${encodeURIComponent(item.qty)}`;
+    url += `&item${idx}_price=${encodeURIComponent(item.price)}`;
+  });
+  
+  // 清空購物車
+  localStorage.setItem('sweetFruitCart', JSON.stringify([]));
+  updateCart();
+  
+  // 跳轉到賣貨便結帳頁
+  window.location.href = url;
+}
+</script>
 </body>
 </html>
