@@ -1,158 +1,394 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>結帳｜爆甜水果鋪</title>
-<meta name="robots" content="noindex,nofollow">
-<link rel="canonical" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
-<link rel="alternate" hreflang="zh-Hant" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
-<link rel="alternate" hreflang="zh-TW" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
-<link rel="alternate" hreflang="x-default" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
-<link rel="stylesheet" href="./css/style.css">
-<!-- 7-11 門市選擇器 JS，請替換成賣貨便後台提供的專屬代碼 -->
-<script src="https://emmaproject.7-11.com.tw/emap.ashx?t=門市選擇器"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>結帳 | 爆甜水果行 Sweet Burst Fruits</title>
+  <style>
+    :root {
+      --primary: #ff6b35;
+      --primary-light: #fff5f2;
+      --gray-100: #f8f8f8;
+      --gray-200: #eee;
+      --gray-300: #ddd;
+      --gray-600: #777;
+      --gray-800: #333;
+      --white: #fff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { 
+      font-family: 'Noto Sans TC', sans-serif; 
+      background: var(--gray-100); 
+      padding: 20px;
+      line-height: 1.6;
+      color: var(--gray-800);
+    }
+    .container { 
+      max-width: 800px; 
+      margin: 0 auto; 
+    }
+    h1 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    h1::before {
+      content: "🛒";
+      font-size: 32px;
+    }
+    .card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--gray-800);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    /* 購物車摘要 */
+    .cart-summary { }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex: 1;
+    }
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+    }
+    .cart-item-info h4 { margin:0 0 5px 0; font-size:16px; }
+    .cart-item-info p { margin:0; color:var(--gray-600); font-size:14px; }
+    .cart-item-right { text-align: right; }
+    .cart-item-price { font-weight:600; color:var(--gray-800); }
+    .cart-item-qty { color:var(--gray-600); font-size:14px; margin-top:5px; }
+    .cart-total {
+      text-align: right;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid var(--gray-200);
+    }
+    .empty-cart {
+      text-align: center;
+      color: var(--gray-600);
+      padding: 40px;
+      font-size: 16px;
+    }
+    .empty-cart a { color: var(--primary); text-decoration: none; }
+    .empty-cart a:hover { text-decoration: underline; }
+    /* 表單樣式 */
+    .form-group { margin-bottom: 20px; position: relative; }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+    .input-wrapper { position: relative; }
+    .input-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: var(--gray-600);
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 12px 12px 40px;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      font-size: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+    }
+    .error {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+    /* 門市選擇 */
+    .store-info {
+      margin-top: 15px;
+      padding: 15px;
+      background: var(--primary-light);
+      border-radius: var(--radius-sm);
+      display: none;
+    }
+    .store-info.show { display: block; }
+    .store-info p { margin:5px 0; }
+    .store-info strong { color: var(--primary); }
+    /* 按鈕 */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      margin-top: 20px;
+    }
+    .btn-primary:hover {
+      background: #e55a2b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255,107,53,0.2);
+    }
+    .btn-secondary {
+      background: var(--white);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      margin-top: 10px;
+    }
+    .btn-secondary:hover { background: var(--primary-light); }
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+      font-size: 16px;
+    }
+    #toast.show { opacity: 1; }
+    /* 響應式 */
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .card { padding: 20px; }
+      h1 { font-size: 24px; }
+      .cart-item { flex-direction: column; align-items: flex-start; gap:10px; }
+      .cart-item-right { text-align: left; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="top-promo">🔥 今日限定：滿 NT$1,200 免運｜LINE 下單再送當季水果小盒</div>
-<header class="header">
-  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>爆甜水果鋪</h1><p>新鮮・天然・爆甜</p></div></a>
-  <nav class="nav">
-    <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./weekly-box.html">一週水果箱</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
-  </nav>
-  <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button><div class="actions">
-    <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
-    <div class="icon" onclick="toast('會員功能可串接登入與訂單查詢')">👤</div>
-    <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
-  </div>
-</header>
-
-<section class="page-hero"><div><h2>結帳</h2><p>確認訂單並選擇7-11取貨</p></div></section>
-<main class="container">
-  <div id="checkoutForm">
-    <section class="checkout-section">
-      <h3>📋 訂單摘要</h3>
-      <div id="checkoutItems"></div>
-      <div class="checkout-total" id="checkoutTotal">總計 NT$ 0</div>
-    </section>
-    <section class="checkout-section">
-      <h3>👤 收件資訊</h3>
-      <div class="form-group"><label>姓名</label><input type="text" id="name" placeholder="請輸入收件人姓名"></div>
-      <div class="form-group"><label>電話</label><input type="tel" id="phone" placeholder="請輸入聯絡電話"></div>
+  <div class="container">
+    <h1>結帳</h1>
+    
+    <!-- 購物車摘要 -->
+    <div class="card cart-summary">
+      <h2 class="section-title">購物車摘要</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total" id="cartTotal"></div>
+    </div>
+    
+    <!-- 顧客資訊 -->
+    <div class="card">
+      <h2 class="section-title">顧客資訊</h2>
       <div class="form-group">
-        <label>取貨門市</label>
-        <button type="button" id="selectStoreBtn" onclick="openStoreSelector()" style="width:100%;padding:12px;background:#ff6b35;color:white;border:none;border-radius:8px;font-size:1rem;cursor:pointer;font-weight:bold;">選擇7-11取貨門市</button>
-        <div id="selectedStore" style="margin-top:8px;color:#333;font-size:0.95rem;padding:8px;background:#f5f5f5;border-radius:6px;display:none;"></div>
-        <input type="hidden" id="storeId">
-        <input type="hidden" id="storeName">
+        <label>姓名 *</label>
+        <div class="input-wrapper">
+          <span class="input-icon">👤</span>
+          <input type="text" id="name" placeholder="請輸入收貨人姓名">
+        </div>
+        <div class="error" id="nameError">請輸入姓名</div>
       </div>
-      <div class="form-group"><label>備註</label><textarea id="note" placeholder="特殊需求或指定配送時段（選填）"></textarea></div>
-    </section>
-    <section class="checkout-section">
-      <h3>💳 付款方式</h3>
-      <div class="payment-options">
-        <label class="payment-option"><input type="radio" name="payment" value="cod" checked> 超商取貨付款</label>
-        <label class="payment-option"><input type="radio" name="payment" value="line"> LINE 轉帳</label>
+      <div class="form-group">
+        <label>電話 *</label>
+        <div class="input-wrapper">
+          <span class="input-icon">📞</span>
+          <input type="tel" id="phone" placeholder="請輸入聯絡電話（09xxxxxxxx）">
+        </div>
+        <div class="error" id="phoneError">請輸入有效的電話（09xxxxxxxx）</div>
       </div>
-      <p style="color:#666;font-size:0.9rem;margin-top:8px;">選擇超商取貨付款，將跳轉到7-11賣貨便完成付款</p>
-    </section>
-    <button class="btn btn-primary" onclick="submitOrder()" style="width:100%;padding:16px;font-size:1.1rem">確認送出訂單</button>
-    <p class="checkout-note">💡 也可以透過 <a href="https://line.me/R/ti/p/@938nzmjr" target="_blank">LINE 快速下單</a>，我們會幫你處理所有細節！</p>
+      <div class="form-group">
+        <label>Email</label>
+        <div class="input-wrapper">
+          <span class="input-icon">📧</span>
+          <input type="email" id="email" placeholder="請輸入Email（選填）">
+        </div>
+      </div>
+    </div>
+    
+    <!-- 取貨門市 -->
+    <div class="card">
+      <h2 class="section-title">取貨門市</h2>
+      <button class="btn btn-secondary" onclick="selectStore()">🏪 選擇7-11門市</button>
+      <div class="store-info" id="storeInfo"></div>
+      <input type="hidden" id="storeId">
+      <input type="hidden" id="storeName">
+      <div class="error" id="storeError">請選擇取貨門市</div>
+    </div>
+    
+    <!-- 提交訂單 -->
+    <button class="btn btn-primary" onclick="submitOrder()">
+      提交訂單（<span id="btnTotal">0</span>）
+    </button>
   </div>
-</main>
-
-<aside class="cart-panel" id="cartPanel">
-  <div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
-  <div class="cart-items" id="cartItems"></div>
-  <div class="total" id="cartTotal">總計 NT$ 0</div>
-  <button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">前往結帳</button>
-  <button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速下單</button>
-</aside>
-<a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
-<div class="toast" id="toast"></div>
-
-<footer>
-  <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
-  <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
-  <div><h3>服務說明</h3><a href="./weekly-box.html">一週水果箱</a><a href="./contact.html">配送說明</a><a href="./gift.html">企業團購</a></div>
-  <div><h3>聯絡方式</h3><a href="https://line.me/R/ti/p/@938nzmjr" target="_blank">LINE：@938nzmjr</a><a href="tel:0926656666">電話：0926-656666</a><a href="mailto:ilohas6868@gmail.com">Email：ilohas6868@gmail.com</a></div>
-</footer>
-<div class="copyright">© 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
-
-<script src="./js/app.js"></script>
-<script>
-// 7-11 門市選擇器回調，請根據賣貨便後台提供的文檔修改
-function openStoreSelector(){
-  // 賣貨便門市選擇器範例，請替換成實際代碼
-  // 商家後台可取得專屬的門市選擇器初始化代碼
-  if(typeof Emap === 'undefined'){
-    alert('請先替換成賣貨便後台提供的門市選擇器JS代碼');
-    return;
-  }
-  Emap.open({
-    onSelect: function(store){
-      document.getElementById('storeId').value = store.id;
-      document.getElementById('storeName').value = store.name;
-      const storeDiv = document.getElementById('selectedStore');
-      storeDiv.style.display = 'block';
-      storeDiv.innerHTML = `✅ 已選擇：${store.name}<br><small>門市編號：${store.id}</small>`;
+  
+  <div id="toast"></div>
+  
+  <script>
+    const merchantId = 'GM2605018541234'; // ← 賣貨便商家編號（已填寫）
+    let cart = JSON.parse(localStorage.getItem('sweetFruitCart') || '[]');
+    const money = n => 'NT$ ' + Number(n).toLocaleString();
+    
+    function updateCart(){
+      const items=document.getElementById('cartItems');
+      const totalEl=document.getElementById('cartTotal');
+      if(!items || !totalEl) return;
+      if(cart.length === 0){
+        items.innerHTML = '<div class="empty-cart">🛒 購物車是空的，<a href="./products.html">去逛逛</a></div>';
+        totalEl.textContent = '';
+        return;
+      }
+      let total = 0;
+      items.innerHTML = cart.map(i => {
+        const sub = i.price * i.qty;
+        total += sub;
+        return `<div class="cart-item">
+          <div class="cart-item-left">
+            <img src="${i.img}" alt="${i.name}" class="cart-item-img">
+            <div class="cart-item-info">
+              <h4>${i.name}</h4>
+              <p>${money(i.price)} × ${i.qty}</p>
+            </div>
+          </div>
+          <div class="cart-item-right">
+            <div class="cart-item-price">${money(sub)}</div>
+            <div class="cart-item-qty">數量: ${i.qty}</div>
+            <div class="qty">
+              <button onclick="changeQty(${JSON.stringify(i.id)},-1)">-</button>
+              <span>${i.qty}</span>
+              <button onclick="changeQty(${JSON.stringify(i.id)},1)">+</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+      totalEl.textContent = '總計 ' + money(total);
+      const btnTotal = document.getElementById('btnTotal');
+      if(btnTotal) btnTotal.textContent = money(total);
     }
-  });
-}
-
-// 提交訂單，跳轉賣貨便結帳頁
-function submitOrder(){
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const storeId = document.getElementById('storeId').value;
-  const storeName = document.getElementById('storeName').value;
-  const cart = JSON.parse(localStorage.getItem('sweetFruitCart') || '[]');
-  const note = document.getElementById('note').value.trim();
-  const payment = document.querySelector('input[name="payment"]:checked').value;
-  
-  if(!name) return toast('請輸入收件人姓名');
-  if(!phone) return toast('請輸入聯絡電話');
-  if(!storeId) return toast('請選擇取貨門市');
-  if(!cart.length) return toast('購物車是空的');
-  
-  // 計算總金額
-  const total = cart.reduce((s,i)=>s + i.price * i.qty, 0);
-  
-  // 賣貨便參數，請替換成你的商家編號
-  const merchantId = 'GM2605018541234'; // ← 賣貨便商家編號（已填寫）
-  if(merchantId === 'YOUR_MERCHANT_ID'){
-    alert('請先修改 checkout.html 裡的 merchantId 為你的賣貨便商家編號');
-    return;
-  }
-  
-  // 拼接賣貨便結帳URL
-  let url = `https://myship.7-11.com.tw/checkout?merchant_id=${encodeURIComponent(merchantId)}`;
-  url += `&total=${encodeURIComponent(total)}`;
-  url += `&name=${encodeURIComponent(name)}`;
-  url += `&phone=${encodeURIComponent(phone)}`;
-  url += `&store_id=${encodeURIComponent(storeId)}`;
-  url += `&store_name=${encodeURIComponent(storeName)}`;
-  url += `&return_url=${encodeURIComponent('https://obaoba0808.github.io/Sweet-Burst-Fruits/thanks.html')}`;
-  url += `&note=${encodeURIComponent(note)}`;
-  url += `&payment=${encodeURIComponent(payment === 'cod' ? 'cod' : 'line')}`;
-  
-  // 加入商品參數（對應賣貨便商品ID）
-  cart.forEach((item, idx) => {
-    const shipId = item.shipId || item.id;
-    url += `&item${idx}_id=${encodeURIComponent(shipId)}`;
-    url += `&item${idx}_name=${encodeURIComponent(item.name)}`;
-    url += `&item${idx}_qty=${encodeURIComponent(item.qty)}`;
-    url += `&item${idx}_price=${encodeURIComponent(item.price)}`;
-  });
-  
-  // 清空購物車
-  localStorage.setItem('sweetFruitCart', JSON.stringify([]));
-  updateCart();
-  
-  // 跳轉到賣貨便結帳頁
-  window.location.href = url;
-}
-</script>
+    
+    function changeQty(id, delta){
+      const item = cart.find(i => i.id === id);
+      if(!item) return;
+      item.qty += delta;
+      if(item.qty <= 0) cart = cart.filter(i => i.id !== id);
+      localStorage.setItem('sweetFruitCart', JSON.stringify(cart));
+      updateCart();
+    }
+    
+    function selectStore(){
+      if(typeof Emap === 'undefined'){
+        toast('門市選擇器尚未載入，請稍後再試');
+        return;
+      }
+      Emap.open({
+        merchantId: merchantId,
+        onSelect: function(store){
+          document.getElementById('storeId').value = store.id;
+          document.getElementById('storeName').value = store.name;
+          const storeInfo = document.getElementById('storeInfo');
+          storeInfo.innerHTML = `<p><strong>已选门市：</strong>${store.name}</p><p><strong>門市編號：</strong>${store.id}</p>`;
+          storeInfo.classList.add('show');
+          document.getElementById('storeError').style.display = 'none';
+        }
+      });
+    }
+    
+    function showError(id, show=true){
+      const el = document.getElementById(id);
+      if(el) el.style.display = show ? 'block' : 'none';
+    }
+    
+    function validate(){
+      let ok = true;
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const storeId = document.getElementById('storeId').value.trim();
+      
+      if(!name) { showError('nameError'); ok=false; } else showError('nameError', false);
+      if(!phone || !/^09\d{8}$/.test(phone)) { showError('phoneError'); ok=false; } else showError('phoneError', false);
+      if(!storeId) { showError('storeError'); ok=false; } else showError('storeError', false);
+      return ok;
+    }
+    
+    function submitOrder(){
+      if(!validate()) return;
+      if(cart.length === 0) { toast('購物車是空的'); return; }
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const storeId = document.getElementById('storeId').value.trim();
+      const storeName = document.getElementById('storeName').value.trim();
+      
+      let url = `https://myship.7-11.com.tw/checkout?merchant_id=${merchantId}`;
+      url += `&name=${encodeURIComponent(name)}`;
+      url += `&phone=${encodeURIComponent(phone)}`;
+      if(email) url += `&email=${encodeURIComponent(email)}`;
+      url += `&store_id=${encodeURIComponent(storeId)}`;
+      url += `&store_name=${encodeURIComponent(storeName)}`;
+      url += `&total=${cart.reduce((s,i)=>s+i.price*i.qty,0)}`;
+      cart.forEach((i,idx)=>{
+        url += `&item${idx}=${encodeURIComponent(i.name)}_${i.qty}_${i.price}`;
+      });
+      
+      localStorage.removeItem('sweetFruitCart');
+      window.location.href = url;
+    }
+    
+    function toast(t){
+      const el=document.getElementById('toast');
+      if(!el) return alert(t);
+      el.textContent=t; el.classList.add('show');
+      setTimeout(()=>el.classList.remove('show'),2200);
+    }
+    
+    document.addEventListener('DOMContentLoaded', updateCart);
+  </script>
 </body>
 </html>
