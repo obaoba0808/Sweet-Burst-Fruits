@@ -120,7 +120,7 @@ function submitOrder(){
   const total = cart.reduce((s,i)=>s + i.price * i.qty, 0);
   
   // 賣貨便參數，請替換成你的商家編號
-  const merchantId = 'YOUR_MERCHANT_ID'; // ← 請修改成你的賣貨便商家編號
+  const merchantId = 'GM2605018541234'; // ← 賣貨便商家編號（已填寫）
   if(merchantId === 'YOUR_MERCHANT_ID'){
     alert('請先修改 checkout.html 裡的 merchantId 為你的賣貨便商家編號');
     return;
