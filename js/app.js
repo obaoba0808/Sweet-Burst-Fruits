@@ -20,7 +20,7 @@ function card(p){
       <p>${p.desc}</p>
       <div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div>
     </div>
-    <button class="buy" onclick="addCart(${p.id})">🛒</button>
+    <button class="buy" onclick="addCart(${JSON.stringify(p.id)})">🛒</button>
   </article>`;
 }
 function render(target='productGrid', list=products){
@@ -46,7 +46,9 @@ function searchProducts(q){
   render('productGrid', products.filter(p=>!q || p.name.includes(q) || p.desc.includes(q) || p.cat.includes(q)));
 }
 function addCart(id){
-  const p=products.find(x=>x.id===id);
+  const allItems = [...products, ...gifts];
+  const p=allItems.find(x=>x.id===id);
+  if(!p) { toast('商品不存在'); return; }
   const item=cart.find(x=>x.id===id);
   item ? item.qty++ : cart.push({...p, qty:1});
   saveCart();
