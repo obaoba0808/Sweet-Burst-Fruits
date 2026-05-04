@@ -16,7 +16,7 @@ const money = n => 'NT$ ' + Number(n).toLocaleString();
 
 function card(p){
   var msBtn = p.myshipProductId
-    ? `<a class="btn-myship" href="javascript:void(0)" onclick='goMyship()'>🏪 賣貨便</a>`
+    ? `<a class="btn-myship" href="javascript:void(0)" onclick='goMyship("${p.myshipProductId}","${p.myshipSpecId}")'>🏪 賣貨便</a>`
     : '';
   return `<article class="card">
     <span class="tag">${p.tag}</span>
@@ -108,8 +108,36 @@ function addWeeklyBox(plan='standard'){
   saveCart();
   toast('已加入購物車：'+weekly.name);
 }
-function goMyship(){
-  window.open(MYSHIP_URL, '_blank');
+function goMyship(productId, specId){
+  // 如果沒傳參數，從購物車取第一個有 myshipProductId 的商品
+  if (!productId) {
+    const cart = JSON.parse(localStorage.getItem('sweetFruitCart') || '[]');
+    // 先找禮盒或週箱
+    const msItem = cart.find(item => item.myshipProductId);
+    if (msItem) {
+      productId = msItem.myshipProductId;
+      specId = msItem.myshipSpecId;
+    } else {
+      // 沒有則用標準週箱
+      productId = weeklyMyship.standard.productId;
+      specId = weeklyMyship.standard.specId;
+    }
+  }
+  
+  // 如果是週箱類型字串，從 weeklyMyship 取 ID
+  if (weeklyMyship[productId]) {
+    specId = weeklyMyship[productId].specId;
+    productId = weeklyMyship[productId].productId;
+  }
+  
+  const params = encodeURIComponent(JSON.stringify({
+    carProduct: productId,
+    carItem: specId,
+    carQty: "1",
+    carMinQty: "1"
+  }));
+  const proxyUrl = `https://sbf-proxy.vercel.app/api/ms/general/detail/${MYSHIP_STORE}?_checkout=${params}`;
+  window.open(proxyUrl, '_blank');
 }
 function goLine(){
   lineOrder();
