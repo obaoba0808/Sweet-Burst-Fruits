@@ -1,12 +1,13 @@
 
 const gifts = [
-  {id: 'g1', name: '愛文芒果水果禮盒', desc: '9顆裝・香氣濃郁・果肉細緻', price: 1380, old: 1680, img: './images/gift-mango.jpg', tag: '爆甜人氣'},
-  {id: 'g2', name: '金鑽鳳梨禮盒', desc: '6顆裝・香甜不咬舌・台灣嚴選', price: 799, old: 999, img: './images/gift-pineapple.jpg', tag: '推薦'},
-  {id: 'g3', name: '巨峰葡萄水果禮盒', desc: '4串裝・皮薄多汁・濃郁果香', price: 1280, old: 1580, img: './images/gift-grape.jpg', tag: '人氣'},
-  {id: 'g4', name: '櫻桃水果禮盒', desc: '一盒裝・飽滿甜脆・送禮首選', price: 1280, old: 1580, img: './images/gift-cherry.jpg', tag: '高級'},
-  {id: 'g5', name: '水蜜桃水果禮盒', desc: '6顆裝・粉嫩香甜・細緻多汁', price: 1280, old: 1580, img: './images/gift-peach.jpg', tag: '香甜'},
-  {id: 'g6', name: '榴槤水果禮盒', desc: '4顆裝・濃郁香甜・愛好者必買', price: 1980, old: 2380, img: './images/gift-durian.jpg', tag: '限量'}
+  {id: 'g1', name: '愛文芒果水果禮盒', desc: '9顆裝・香氣濃郁・果肉細緻', price: 1380, old: 1680, img: './images/gift-mango.jpg', tag: '爆甜人氣', myshipProductId: '2605021152246963', myshipSpecId: '2605021152246964'},
+  {id: 'g2', name: '金鑽鳳梨禮盒', desc: '6顆裝・香甜不咬舌・台灣嚴選', price: 799, old: 999, img: './images/gift-pineapple.jpg', tag: '推薦', myshipProductId: '2605011150175300', myshipSpecId: '2605011150175301'},
+  {id: 'g3', name: '巨峰葡萄水果禮盒', desc: '4串裝・皮薄多汁・濃郁果香', price: 1280, old: 1580, img: './images/gift-grape.jpg', tag: '人氣', myshipProductId: '2605021152260362', myshipSpecId: '2605021152260363'},
+  {id: 'g4', name: '櫻桃水果禮盒', desc: '一盒裝・飽滿甜脆・送禮首選', price: 1280, old: 1580, img: './images/gift-cherry.jpg', tag: '高級', myshipProductId: '2605021152270007', myshipSpecId: '2605021152270008'},
+  {id: 'g5', name: '水蜜桃水果禮盒', desc: '6顆裝・粉嫩香甜・細緻多汁', price: 1280, old: 1580, img: './images/gift-peach.jpg', tag: '香甜', myshipProductId: '2605021152272368', myshipSpecId: '2605021152272369'},
+  {id: 'g6', name: '榴槤水果禮盒', desc: '4顆裝・濃郁香甜・愛好者必買', price: 1980, old: 2380, img: './images/gift-durian.jpg', tag: '限量', myshipProductId: '2605021152278900', myshipSpecId: '2605021152278901'}
 ];
+const weeklyMyship = {standard: {productId: '2605021152287723', specId: '2605021152287724'}, premium: {productId: '2605021152293023', specId: '2605021152293024'}};
 const products = [{"id": 1, "name": "愛文芒果", "desc": "香氣濃郁・果肉細緻・人氣熱賣", "price": 699, "old": 880, "cat": "熱銷", "img": "./images/mango.jpg", "tag": "爆甜"}, {"id": 2, "name": "金鑽鳳梨", "desc": "香甜不咬舌・台灣嚴選", "price": 499, "old": 650, "cat": "熱銷", "img": "./images/pineapple.jpg", "tag": "回購"}, {"id": 3, "name": "巨峰葡萄", "desc": "皮薄多汁・濃郁果香", "price": 799, "old": 980, "cat": "熱銷", "img": "./images/grape.jpg", "tag": "人氣"}, {"id": 4, "name": "香吉士", "desc": "酸甜平衡・多汁清爽", "price": 399, "old": 520, "cat": "柑橘", "img": "./images/orange.jpg", "tag": "多汁"}, {"id": 5, "name": "奇異果", "desc": "酸甜爽口・日常水果補給", "price": 520, "old": 650, "cat": "健康", "img": "./images/kiwi.jpg", "tag": "健康"}, {"id": 6, "name": "紅心火龍果", "desc": "鮮紅多汁・清爽順口", "price": 459, "old": 590, "cat": "健康", "img": "./images/dragonfruit.jpg", "tag": "鮮紅"}, {"id": 7, "name": "藍莓", "desc": "小顆飽滿・適合早餐甜點", "price": 599, "old": 760, "cat": "莓果", "img": "./images/blueberry.jpg", "tag": "精選"}, {"id": 8, "name": "櫻桃", "desc": "飽滿甜脆・送禮自用皆宜", "price": 899, "old": 1180, "cat": "高級", "img": "./images/cherry.jpg", "tag": "高級"}, {"id": 9, "name": "水蜜桃", "desc": "粉嫩香甜・細緻多汁", "price": 760, "old": 960, "cat": "高級", "img": "./images/peach.jpg", "tag": "香甜"}, {"id": 10, "name": "哈密瓜", "desc": "果肉細緻・甜香爽口", "price": 680, "old": 850, "cat": "瓜果", "img": "./images/melon.jpg", "tag": "甜香"}, {"id": 11, "name": "木瓜", "desc": "熟度剛好・柔軟香甜", "price": 360, "old": 450, "cat": "瓜果", "img": "./images/papaya.jpg", "tag": "當季"}, {"id": 12, "name": "酪梨", "desc": "綿密滑順・沙拉早餐首選", "price": 420, "old": 550, "cat": "健康", "img": "./images/avocado.jpg", "tag": "營養"}, {"id": 13, "name": "榴槤", "desc": "濃郁香甜・愛好者必買", "price": 1299, "old": 1580, "cat": "高級", "img": "./images/durian.jpg", "tag": "限量"}];
 let cart = JSON.parse(localStorage.getItem('sweetFruitCart') || '[]');
 const money = n => 'NT$ ' + Number(n).toLocaleString();

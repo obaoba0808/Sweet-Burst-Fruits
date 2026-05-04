@@ -200,7 +200,7 @@
       <li>平台交易保障</li>
       <li>支援信用卡 / icash Pay</li>
     </ul>
-    <a class="btn" href="https://myship.7-11.com.tw/general/detail?id=GM2605018541234" target="_blank">前往賣貨便結帳 →</a>
+    <a class="btn" href="javascript:void(0)" onclick="event.stopPropagation();goMyship()">前往賣貨便結帳 →</a>
   </div>
   <!-- LINE 訂購 -->
   <div class="checkout-card secondary" onclick="goLine()">
@@ -244,28 +244,125 @@
 
 <script src="./js/app.js"></script>
 <script>
+var MYSHIP_STORE = 'GM2605018541234';
+var MYSHIP_STORE_URL = 'https://myship.7-11.com.tw/general/detail?id=' + MYSHIP_STORE;
+
 function goMyship(){
+  // Collect myship-eligible items from cart
+  var myshipItems = [];
+  cart.forEach(function(item){
+    if(item.myshipProductId && item.myshipSpecId){
+      myshipItems.push({name: item.name, qty: item.qty, productId: item.myshipProductId, specId: item.myshipSpecId});
+    }
+    if(item.id === 999 && typeof weeklyMyship !== 'undefined'){
+      myshipItems.push({name: item.name, qty: item.qty, productId: weeklyMyship.standard.productId, specId: weeklyMyship.standard.specId});
+    }
+    if(item.id === 1000 && typeof weeklyMyship !== 'undefined'){
+      myshipItems.push({name: item.name, qty: item.qty, productId: weeklyMyship.premium.productId, specId: weeklyMyship.premium.specId});
+    }
+  });
+
+  if(myshipItems.length === 0){
+    toast('購物車內沒有賣貨便商品，請改用 LINE 訂購單品水果');
+    return;
+  }
+
+  // Build checkout form and open in new tab
+  // The new tab will: 1) fetch myship store page to get CSRF token, 2) POST checkout form
+  var carProducts = ',';
+  var carItems = ',';
+  var carQtys = ',';
+  var carMinQtys = ',';
+  myshipItems.forEach(function(it){
+    for(var q = 0; q < it.qty; q++){
+      carProducts += it.productId + ',';
+      carItems += it.specId + ',';
+      carQtys += '1,';
+      carMinQtys += '0,';
+    }
+  });
+
+  var itemNames = myshipItems.map(function(it){ return it.name + (it.qty > 1 ? ' x' + it.qty : ''); }).join('、');
+
+  var w = window.open('', '_blank');
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>正在前往賣貨便結帳...</title>' +
+    '<style>*{margin:0;padding:0;box-sizing:border-box}body{display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:#fffaf3}' +
+    '.box{text-align:center;max-width:460px;padding:48px 32px}' +
+    '.spinner{width:52px;height:52px;border:5px solid #f0e6db;border-top-color:#ff6a00;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 24px}@keyframes spin{to{transform:rotate(360deg)}}' +
+    'h2{font-size:24px;color:#ff6a00;margin-bottom:12px;font-weight:900}' +
+    '.items{background:#fff;border-radius:14px;padding:16px 20px;margin:16px 0 24px;box-shadow:0 4px 16px rgba(0,0,0,.06);text-align:left}' +
+    '.items h4{font-size:14px;color:#999;margin-bottom:8px}.items p{font-size:16px;color:#333;font-weight:700}' +
+    '.status{color:#888;font-size:14px;margin-bottom:8px}' +
+    '.btn{display:inline-block;padding:14px 36px;border-radius:999px;font-size:17px;font-weight:900;cursor:pointer;border:none;text-decoration:none;transition:.2s}' +
+    '.btn-primary{background:linear-gradient(135deg,#ff7a00,#ffb703);color:#fff;box-shadow:0 8px 20px rgba(255,106,0,.28)}' +
+    '.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,106,0,.36)}' +
+    '.btn-outline{background:#fff;color:#ff6a00;border:2px solid #ffd1ad;margin-top:12px}' +
+    '.hidden{display:none}' +
+    '</style></head><body>' +
+    '<div class="box">' +
+    '<div class="spinner" id="spinner"></div>' +
+    '<h2 id="title">正在前往賣貨便結帳</h2>' +
+    '<div class="items"><h4>結帳商品</h4><p>' + itemNames + '</p></div>' +
+    '<p class="status" id="status">正在取得授權...</p>' +
+    '<div id="btnGroup" class="hidden">' +
+    '<button class="btn btn-primary" onclick="submitCheckout()">前往賣貨便結帳 →</button>' +
+    '<br><a class="btn btn-outline" href="' + MYSHIP_STORE_URL + '" target="_blank">手動前往商店頁</a>' +
+    '</div></div>' +
+    '<form id="mf" method="POST" action="https://myship.7-11.com.tw/general/detail">' +
+    '<input name="StoreId" value="' + MYSHIP_STORE + '">' +
+    '<input name="CarProduct" value="' + carProducts + '">' +
+    '<input name="CarItem" value="' + carItems + '">' +
+    '<input name="CarQty" value="' + carQtys + '">' +
+    '<input name="CarMinQty" value="' + carMinQtys + '">' +
+    '<input name="CartID" value="">' +
+    '<input name="CspRef" value="">' +
+    '</form>' +
+    '<script>' +
+    'var tokenReady=false;' +
+    'function submitCheckout(){document.getElementById("mf").submit();}' +
+    'try{fetch("' + MYSHIP_STORE_URL + '",{credentials:"include",mode:"cors"}).then(function(r){return r.text()}).then(function(html){' +
+    '  var m=html.match(/__RequestVerificationToken.*?value="([^"]+)"/);' +
+    '  if(m){var i=document.createElement("input");i.type="hidden";i.name="__RequestVerificationToken";i.value=m[1];document.getElementById("mf").appendChild(i);tokenReady=true;}' +
+    '  document.getElementById("spinner").style.display="none";' +
+    '  document.getElementById("title").textContent="準備好結帳了！";' +
+    '  document.getElementById("status").textContent="點擊下方按鈕前往賣貨便完成結帳";' +
+    '  document.getElementById("btnGroup").classList.remove("hidden");' +
+    '  if(tokenReady){submitCheckout();}' +
+    '}).catch(function(e){fallback();})}catch(e){fallback();}' +
+    'function fallback(){' +
+    '  document.getElementById("spinner").style.display="none";' +
+    '  document.getElementById("title").textContent="需要手動結帳";' +
+    '  document.getElementById("status").textContent="無法自動取得授權，請點擊前往賣貨便商店手動選購";' +
+    '  document.getElementById("btnGroup").classList.remove("hidden");' +
+    '}' +
+    '<\/script></body></html>');
+  w.document.close();
+
+  // Clear cart
   localStorage.removeItem('sweetFruitCart');
+  cart = [];
   updateCart();
-  window.open('https://myship.7-11.com.tw/general/detail?id=GM2605018541234','_blank');
+  renderCartPreview();
 }
+
 function goLine(){
   window.open('https://line.me/R/ti/p/@938nzmjr','_blank');
 }
-// 購物車預覽
+
 function renderCartPreview(){
-  const list = document.getElementById('cartPreviewList');
-  const totalEl = document.getElementById('cartPreviewTotal');
+  var list = document.getElementById('cartPreviewList');
+  var totalEl = document.getElementById('cartPreviewTotal');
   if(!list) return;
   if(cart.length === 0){
     list.innerHTML = '<span class="cart-preview-empty">購物車是空的 — 沒關係，你可以直接在賣貨便或 LINE 選購！</span>';
     if(totalEl) totalEl.textContent = '';
     return;
   }
-  const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
-  list.innerHTML = cart.map(i => 
-    `<span class="cart-preview-item"><b>${i.name}</b> × ${i.qty}（NT$${(i.price*i.qty).toLocaleString()}）</span>`
-  ).join('');
+  var total = cart.reduce(function(s,i){ return s + i.price * i.qty; }, 0);
+  list.innerHTML = cart.map(function(i){
+    var tag = (i.myshipProductId || i.id === 999 || i.id === 1000) ? ' 🏪' : '';
+    return '<span class="cart-preview-item"><b>' + i.name + '</b> x ' + i.qty + '（NT$' + (i.price*i.qty).toLocaleString() + '）' + tag + '</span>';
+  }).join('');
   if(totalEl) totalEl.textContent = '小計 NT$' + total.toLocaleString();
 }
 document.addEventListener('DOMContentLoaded', renderCartPreview);
