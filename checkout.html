@@ -141,6 +141,16 @@
 </footer>
 <div class="copyright">&copy; 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
 
+<aside class="cart-panel" id="cartPanel">
+<div class="cart-head"><h3>我的購物車</h3><button class="close" onclick="toggleCart()">×</button></div>
+<div class="cart-items" id="cartItems"></div>
+<div class="total" id="cartTotal">總計 NT$ 0</div>
+<button class="btn btn-primary" onclick="checkout()" style="width:100%;margin-top:16px">前往結帳</button>
+<button class="btn btn-light" onclick="lineOrder()" style="width:100%;margin-top:10px">LINE 快速下單</button>
+</aside>
+<a class="line-fixed" onclick="lineOrder()">💬 LINE 快速下單</a>
+<div class="toast" id="toast"></div>
+
 <script src="./js/app.js"></script>
 <script>
 function goMyship(){
