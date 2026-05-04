@@ -209,3 +209,10 @@ footer p,footer a{color:#bbb;line-height:2;display:block}
 @media(max-width:900px){.box-options{grid-template-columns:1fr}.box-cta{grid-template-columns:1fr}.faq-body{padding-left:24px}.faq-header{flex-direction:column;align-items:flex-start}}
 
 .box-card-img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:18px;margin-bottom:18px;box-shadow:0 6px 20px rgba(0,0,0,.12)}
+
+/* ── 賣貨便按鈕 ── */
+.card-actions{display:flex;align-items:center;gap:8px;padding:0 18px 18px}
+.btn-myship{display:inline-block;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:900;text-decoration:none;background:linear-gradient(135deg,#06c755,#34d058);color:#fff;box-shadow:0 4px 12px rgba(6,199,85,.25);transition:.2s;white-space:nowrap}
+.btn-myship:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,199,85,.35)}
+.btn-myship-lg{display:inline-block;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:900;text-decoration:none;background:linear-gradient(135deg,#06c755,#34d058);color:#fff;box-shadow:0 6px 18px rgba(6,199,85,.28);transition:.22s;border:0;cursor:pointer;white-space:nowrap}
+.btn-myship-lg:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(6,199,85,.38)}

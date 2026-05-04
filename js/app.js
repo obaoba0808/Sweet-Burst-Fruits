@@ -8,11 +8,16 @@ const gifts = [
   {id: 'g6', name: '榴槤水果禮盒', desc: '4顆裝・濃郁香甜・愛好者必買', price: 1980, old: 2380, img: './images/gift-durian.jpg', tag: '限量', myshipProductId: '2605021152278900', myshipSpecId: '2605021152278901'}
 ];
 const weeklyMyship = {standard: {productId: '2605021152287723', specId: '2605021152287724'}, premium: {productId: '2605021152293023', specId: '2605021152293024'}};
+var MYSHIP_STORE = 'GM2605018541234';
+var MYSHIP_URL = 'https://myship.7-11.com.tw/general/detail/' + MYSHIP_STORE;
 const products = [{"id": 1, "name": "愛文芒果", "desc": "香氣濃郁・果肉細緻・人氣熱賣", "price": 699, "old": 880, "cat": "熱銷", "img": "./images/mango.jpg", "tag": "爆甜"}, {"id": 2, "name": "金鑽鳳梨", "desc": "香甜不咬舌・台灣嚴選", "price": 499, "old": 650, "cat": "熱銷", "img": "./images/pineapple.jpg", "tag": "回購"}, {"id": 3, "name": "巨峰葡萄", "desc": "皮薄多汁・濃郁果香", "price": 799, "old": 980, "cat": "熱銷", "img": "./images/grape.jpg", "tag": "人氣"}, {"id": 4, "name": "香吉士", "desc": "酸甜平衡・多汁清爽", "price": 399, "old": 520, "cat": "柑橘", "img": "./images/orange.jpg", "tag": "多汁"}, {"id": 5, "name": "奇異果", "desc": "酸甜爽口・日常水果補給", "price": 520, "old": 650, "cat": "健康", "img": "./images/kiwi.jpg", "tag": "健康"}, {"id": 6, "name": "紅心火龍果", "desc": "鮮紅多汁・清爽順口", "price": 459, "old": 590, "cat": "健康", "img": "./images/dragonfruit.jpg", "tag": "鮮紅"}, {"id": 7, "name": "藍莓", "desc": "小顆飽滿・適合早餐甜點", "price": 599, "old": 760, "cat": "莓果", "img": "./images/blueberry.jpg", "tag": "精選"}, {"id": 8, "name": "櫻桃", "desc": "飽滿甜脆・送禮自用皆宜", "price": 899, "old": 1180, "cat": "高級", "img": "./images/cherry.jpg", "tag": "高級"}, {"id": 9, "name": "水蜜桃", "desc": "粉嫩香甜・細緻多汁", "price": 760, "old": 960, "cat": "高級", "img": "./images/peach.jpg", "tag": "香甜"}, {"id": 10, "name": "哈密瓜", "desc": "果肉細緻・甜香爽口", "price": 680, "old": 850, "cat": "瓜果", "img": "./images/melon.jpg", "tag": "甜香"}, {"id": 11, "name": "木瓜", "desc": "熟度剛好・柔軟香甜", "price": 360, "old": 450, "cat": "瓜果", "img": "./images/papaya.jpg", "tag": "當季"}, {"id": 12, "name": "酪梨", "desc": "綿密滑順・沙拉早餐首選", "price": 420, "old": 550, "cat": "健康", "img": "./images/avocado.jpg", "tag": "營養"}, {"id": 13, "name": "榴槤", "desc": "濃郁香甜・愛好者必買", "price": 1299, "old": 1580, "cat": "高級", "img": "./images/durian.jpg", "tag": "限量"}];
 let cart = JSON.parse(localStorage.getItem('sweetFruitCart') || '[]');
 const money = n => 'NT$ ' + Number(n).toLocaleString();
 
 function card(p){
+  var msBtn = p.myshipProductId
+    ? `<a class="btn-myship" href="javascript:void(0)" onclick='goMyship()'>🏪 賣貨便</a>`
+    : '';
   return `<article class="card">
     <span class="tag">${p.tag}</span>
     <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
@@ -21,7 +26,10 @@ function card(p){
       <p>${p.desc}</p>
       <div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div>
     </div>
-    <button class="buy" onclick='addCart(${JSON.stringify(p.id)})'>🛒</button>
+    <div class="card-actions">
+      <button class="buy" onclick='addCart(${JSON.stringify(p.id)})'>🛒</button>
+      ${msBtn}
+    </div>
   </article>`;
 }
 function render(target='productGrid', list=products){
@@ -88,12 +96,23 @@ function checkout(){
 function lineOrder(){
   window.open('https://line.me/R/ti/p/@938nzmjr', '_blank');
 }
+function addToCartByName(name, price){
+  // weekly-box.html fallback
+  if(name && name.includes('豪華')) addWeeklyBox('premium');
+  else addWeeklyBox('standard');
+}
 function addWeeklyBox(plan='standard'){
-  const weekly = {id: plan==='premium'?1000:999,name: plan==='premium'?'豪華一週家庭水果箱':'一週家庭水果箱',desc:'7天營養搭配・全家共享・新鮮直送',price: plan==='premium'?1680:999,old: plan==='premium'?2180:1399,cat:'水果箱',img:'./images/banner-weekly-box.jpg',tag:'一週份量'};
-  const item=cart.find(x=>x.id===weekly.id);
+  var weekly = {id: plan==='premium'?1000:999,name: plan==='premium'?'豪華一週家庭水果箱':'一週家庭水果箱',desc:'7天營養搭配・全家共享・新鮮直送',price: plan==='premium'?1680:999,old: plan==='premium'?2180:1399,cat:'水果箱',img:'./images/banner-weekly-box.jpg',tag:'一週份量',myshipProductId:plan==='premium'?'2605021152293023':'2605021152287723'};
+  var item=cart.find(x=>x.id===weekly.id);
   item ? item.qty++ : cart.push({...weekly,qty:1});
   saveCart();
   toast('已加入購物車：'+weekly.name);
+}
+function goMyship(){
+  window.open(MYSHIP_URL, '_blank');
+}
+function goLine(){
+  lineOrder();
 }
 function toast(t){
   const el=document.getElementById('toast');
