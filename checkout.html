@@ -3,392 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>結帳 | 爆甜水果行 Sweet Burst Fruits</title>
+  <title>結帳 | 爆甜水果鋪 Sweet Burst Fruits</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
+  <link rel="stylesheet" href="./css/style.css">
   <style>
-    :root {
-      --primary: #ff6b35;
-      --primary-light: #fff5f2;
-      --gray-100: #f8f8f8;
-      --gray-200: #eee;
-      --gray-300: #ddd;
-      --gray-600: #777;
-      --gray-800: #333;
-      --white: #fff;
-      --shadow: 0 4px 12px rgba(0,0,0,0.08);
-      --radius: 12px;
-      --radius-sm: 8px;
+    .checkout-hero { text-align:center; padding:40px 20px 20px; }
+    .checkout-hero h2 { color:var(--primary); font-size:28px; margin-bottom:8px; }
+    .checkout-hero p { color:#777; font-size:16px; }
+    .checkout-options { max-width:800px; margin:0 auto; padding:0 20px 60px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .checkout-card {
+      background:#fff; border-radius:16px; padding:32px 24px; text-align:center;
+      box-shadow:0 4px 16px rgba(0,0,0,0.08); transition:transform 0.25s,box-shadow 0.25s;
+      border:2px solid transparent; cursor:pointer; position:relative;
     }
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { 
-      font-family: 'Noto Sans TC', sans-serif; 
-      background: var(--gray-100); 
-      padding: 20px;
-      line-height: 1.6;
-      color: var(--gray-800);
+    .checkout-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.12); }
+    .checkout-card.primary { border-color:var(--primary); }
+    .checkout-card .card-icon { font-size:48px; margin-bottom:16px; }
+    .checkout-card h3 { font-size:20px; margin-bottom:10px; color:#333; }
+    .checkout-card .card-desc { color:#666; font-size:14px; line-height:1.7; margin-bottom:20px; }
+    .checkout-card .card-features { text-align:left; margin-bottom:20px; }
+    .checkout-card .card-features li { list-style:none; padding:6px 0; font-size:14px; color:#555; }
+    .checkout-card .card-features li::before { content:'✓ '; color:#2e7d32; font-weight:bold; }
+    .checkout-card .btn { 
+      display:inline-block; padding:12px 28px; border-radius:8px; font-size:16px; font-weight:600;
+      text-decoration:none; transition:background 0.3s,transform 0.2s;
     }
-    .container { 
-      max-width: 800px; 
-      margin: 0 auto; 
+    .checkout-card .btn:hover { transform:translateY(-2px); }
+    .checkout-card.primary .btn { background:var(--primary); color:#fff; }
+    .checkout-card.primary .btn:hover { background:#e55a2b; }
+    .checkout-card.secondary .btn { background:#06c755; color:#fff; }
+    .checkout-card.secondary .btn:hover { background:#05b04c; }
+    .badge-hot {
+      position:absolute; top:-8px; right:16px; background:#ff4444; color:#fff;
+      padding:4px 12px; border-radius:12px; font-size:12px; font-weight:bold;
     }
-    h1 {
-      color: var(--primary);
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    .cart-preview {
+      max-width:800px; margin:0 auto 20px; padding:0 20px;
     }
-    h1::before {
-      content: "🛒";
-      font-size: 32px;
+    .cart-preview-card {
+      background:#fff; border-radius:12px; padding:20px 24px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
     }
-    .card {
-      background: var(--white);
-      padding: 30px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-bottom: 20px;
+    .cart-preview-card h3 { font-size:16px; color:#333; margin-bottom:12px; }
+    .cart-preview-list { display:flex; flex-wrap:wrap; gap:8px; }
+    .cart-preview-item {
+      background:#fff5f2; padding:6px 14px; border-radius:20px;
+      font-size:13px; color:#555;
     }
-    .section-title {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: var(--gray-800);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .cart-preview-item b { color:var(--primary); }
+    .cart-preview-empty { color:#999; font-size:14px; }
+    .note-box {
+      max-width:800px; margin:20px auto; padding:0 20px;
     }
-    .section-title::before {
-      content: "";
-      display: inline-block;
-      width: 4px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 2px;
+    .note-box-inner {
+      background:#fffbe6; border:1px solid #ffe58f; border-radius:10px;
+      padding:16px 20px; font-size:13px; color:#8c6d1f; line-height:1.8;
     }
-    /* 購物車摘要 */
-    .cart-summary { }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .cart-item:last-child { border-bottom: none; }
-    .cart-item-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      flex: 1;
-    }
-    .cart-item-img {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--radius-sm);
-      object-fit: cover;
-    }
-    .cart-item-info h4 { margin:0 0 5px 0; font-size:16px; }
-    .cart-item-info p { margin:0; color:var(--gray-600); font-size:14px; }
-    .cart-item-right { text-align: right; }
-    .cart-item-price { font-weight:600; color:var(--gray-800); }
-    .cart-item-qty { color:var(--gray-600); font-size:14px; margin-top:5px; }
-    .cart-total {
-      text-align: right;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 2px solid var(--gray-200);
-    }
-    .empty-cart {
-      text-align: center;
-      color: var(--gray-600);
-      padding: 40px;
-      font-size: 16px;
-    }
-    .empty-cart a { color: var(--primary); text-decoration: none; }
-    .empty-cart a:hover { text-decoration: underline; }
-    /* 表單樣式 */
-    .form-group { margin-bottom: 20px; position: relative; }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: var(--gray-800);
-    }
-    .input-wrapper { position: relative; }
-    .input-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 18px;
-      color: var(--gray-600);
-    }
-    input, select {
-      width: 100%;
-      padding: 12px 12px 12px 40px;
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-sm);
-      font-size: 16px;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    input:focus, select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
-    }
-    .error {
-      color: #e74c3c;
-      font-size: 14px;
-      margin-top: 5px;
-      display: none;
-    }
-    /* 門市選擇 */
-    .store-info {
-      margin-top: 15px;
-      padding: 15px;
-      background: var(--primary-light);
-      border-radius: var(--radius-sm);
-      display: none;
-    }
-    .store-info.show { display: block; }
-    .store-info p { margin:5px 0; }
-    .store-info strong { color: var(--primary); }
-    /* 按鈕 */
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: var(--white);
-      margin-top: 20px;
-    }
-    .btn-primary:hover {
-      background: #e55a2b;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(255,107,53,0.2);
-    }
-    .btn-secondary {
-      background: var(--white);
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      margin-top: 10px;
-    }
-    .btn-secondary:hover { background: var(--primary-light); }
-    /* Toast */
-    #toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: var(--radius-sm);
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: 1000;
-      font-size: 16px;
-    }
-    #toast.show { opacity: 1; }
-    /* 響應式 */
-    @media (max-width: 600px) {
-      body { padding: 10px; }
-      .card { padding: 20px; }
-      h1 { font-size: 24px; }
-      .cart-item { flex-direction: column; align-items: flex-start; gap:10px; }
-      .cart-item-right { text-align: left; }
+    @media (max-width:600px) {
+      .checkout-options { grid-template-columns:1fr; }
+      .checkout-card { padding:24px 18px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>結帳</h1>
-    
-    <!-- 購物車摘要 -->
-    <div class="card cart-summary">
-      <h2 class="section-title">購物車摘要</h2>
-      <div id="cartItems"></div>
-      <div class="cart-total" id="cartTotal"></div>
-    </div>
-    
-    <!-- 顧客資訊 -->
-    <div class="card">
-      <h2 class="section-title">顧客資訊</h2>
-      <div class="form-group">
-        <label>姓名 *</label>
-        <div class="input-wrapper">
-          <span class="input-icon">👤</span>
-          <input type="text" id="name" placeholder="請輸入收貨人姓名">
-        </div>
-        <div class="error" id="nameError">請輸入姓名</div>
-      </div>
-      <div class="form-group">
-        <label>電話 *</label>
-        <div class="input-wrapper">
-          <span class="input-icon">📞</span>
-          <input type="tel" id="phone" placeholder="請輸入聯絡電話（09xxxxxxxx）">
-        </div>
-        <div class="error" id="phoneError">請輸入有效的電話（09xxxxxxxx）</div>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <div class="input-wrapper">
-          <span class="input-icon">📧</span>
-          <input type="email" id="email" placeholder="請輸入Email（選填）">
-        </div>
-      </div>
-    </div>
-    
-    <!-- 取貨門市 -->
-    <div class="card">
-      <h2 class="section-title">取貨門市</h2>
-      <button class="btn btn-secondary" onclick="selectStore()">🏪 選擇7-11門市</button>
-      <div class="store-info" id="storeInfo"></div>
-      <input type="hidden" id="storeId">
-      <input type="hidden" id="storeName">
-      <div class="error" id="storeError">請選擇取貨門市</div>
-    </div>
-    
-    <!-- 提交訂單 -->
-    <button class="btn btn-primary" onclick="submitOrder()">
-      提交訂單（<span id="btnTotal">0</span>）
-    </button>
+
+<div class="top-promo">🔥 今日限定：滿 NT$1,200 免運｜LINE 下單再送當季水果小盒</div>
+<header class="header">
+  <a class="brand" href="./index.html"><div class="logo"></div><div><h1>爆甜水果鋪</h1><p>新鮮・天然・爆甜</p></div></a>
+  <nav class="nav">
+    <a href="./index.html">首頁</a><a href="./products.html">所有商品</a><a href="./weekly-box.html">一週水果箱</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a><a href="./story.html">產地故事</a><a href="./contact.html">聯絡我們</a>
+  </nav>
+  <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button>
+  <div class="actions">
+    <label class="search"><input placeholder="搜尋水果..." oninput="searchProducts(this.value)"></label>
+    <div class="icon" onclick="toggleCart()">🛒<em class="badge" id="cartCount">0</em></div>
   </div>
-  
-  <div id="toast"></div>
-  
-  <script>
-    const merchantId = 'GM2605018541234'; // ← 賣貨便商家編號（已填寫）
-    let cart = JSON.parse(localStorage.getItem('sweetFruitCart') || '[]');
-    const money = n => 'NT$ ' + Number(n).toLocaleString();
-    
-    function updateCart(){
-      const items=document.getElementById('cartItems');
-      const totalEl=document.getElementById('cartTotal');
-      if(!items || !totalEl) return;
-      if(cart.length === 0){
-        items.innerHTML = '<div class="empty-cart">🛒 購物車是空的，<a href="./products.html">去逛逛</a></div>';
-        totalEl.textContent = '';
-        return;
-      }
-      let total = 0;
-      items.innerHTML = cart.map(i => {
-        const sub = i.price * i.qty;
-        total += sub;
-        return `<div class="cart-item">
-          <div class="cart-item-left">
-            <img src="${i.img}" alt="${i.name}" class="cart-item-img">
-            <div class="cart-item-info">
-              <h4>${i.name}</h4>
-              <p>${money(i.price)} × ${i.qty}</p>
-            </div>
-          </div>
-          <div class="cart-item-right">
-            <div class="cart-item-price">${money(sub)}</div>
-            <div class="cart-item-qty">數量: ${i.qty}</div>
-            <div class="qty">
-              <button onclick="changeQty(${JSON.stringify(i.id)},-1)">-</button>
-              <span>${i.qty}</span>
-              <button onclick="changeQty(${JSON.stringify(i.id)},1)">+</button>
-            </div>
-          </div>
-        </div>`;
-      }).join('');
-      totalEl.textContent = '總計 ' + money(total);
-      const btnTotal = document.getElementById('btnTotal');
-      if(btnTotal) btnTotal.textContent = money(total);
-    }
-    
-    function changeQty(id, delta){
-      const item = cart.find(i => i.id === id);
-      if(!item) return;
-      item.qty += delta;
-      if(item.qty <= 0) cart = cart.filter(i => i.id !== id);
-      localStorage.setItem('sweetFruitCart', JSON.stringify(cart));
-      updateCart();
-    }
-    
-    function selectStore(){
-      if(typeof Emap === 'undefined'){
-        toast('門市選擇器尚未載入，請稍後再試');
-        return;
-      }
-      Emap.open({
-        merchantId: merchantId,
-        onSelect: function(store){
-          document.getElementById('storeId').value = store.id;
-          document.getElementById('storeName').value = store.name;
-          const storeInfo = document.getElementById('storeInfo');
-          storeInfo.innerHTML = `<p><strong>已选门市：</strong>${store.name}</p><p><strong>門市編號：</strong>${store.id}</p>`;
-          storeInfo.classList.add('show');
-          document.getElementById('storeError').style.display = 'none';
-        }
-      });
-    }
-    
-    function showError(id, show=true){
-      const el = document.getElementById(id);
-      if(el) el.style.display = show ? 'block' : 'none';
-    }
-    
-    function validate(){
-      let ok = true;
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const storeId = document.getElementById('storeId').value.trim();
-      
-      if(!name) { showError('nameError'); ok=false; } else showError('nameError', false);
-      if(!phone || !/^09\d{8}$/.test(phone)) { showError('phoneError'); ok=false; } else showError('phoneError', false);
-      if(!storeId) { showError('storeError'); ok=false; } else showError('storeError', false);
-      return ok;
-    }
-    
-    function submitOrder(){
-      if(!validate()) return;
-      if(cart.length === 0) { toast('購物車是空的'); return; }
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const storeId = document.getElementById('storeId').value.trim();
-      const storeName = document.getElementById('storeName').value.trim();
-      
-      let url = `https://myship.7-11.com.tw/checkout?merchant_id=${merchantId}`;
-      url += `&name=${encodeURIComponent(name)}`;
-      url += `&phone=${encodeURIComponent(phone)}`;
-      if(email) url += `&email=${encodeURIComponent(email)}`;
-      url += `&store_id=${encodeURIComponent(storeId)}`;
-      url += `&store_name=${encodeURIComponent(storeName)}`;
-      url += `&total=${cart.reduce((s,i)=>s+i.price*i.qty,0)}`;
-      cart.forEach((i,idx)=>{
-        url += `&item${idx}=${encodeURIComponent(i.name)}_${i.qty}_${i.price}`;
-      });
-      
-      localStorage.removeItem('sweetFruitCart');
-      window.location.href = url;
-    }
-    
-    function toast(t){
-      const el=document.getElementById('toast');
-      if(!el) return alert(t);
-      el.textContent=t; el.classList.add('show');
-      setTimeout(()=>el.classList.remove('show'),2200);
-    }
-    
-    document.addEventListener('DOMContentLoaded', updateCart);
-  </script>
+</header>
+
+<section class="checkout-hero">
+  <h2>🛒 選擇結帳方式</h2>
+  <p>挑選最方便的方式完成訂購</p>
+</section>
+
+<!-- 購物車預覽 -->
+<div class="cart-preview">
+  <div class="cart-preview-card">
+    <h3>📦 你的購物車</h3>
+    <div id="cartPreviewList" class="cart-preview-list"></div>
+    <div id="cartPreviewTotal" style="text-align:right;margin-top:12px;font-size:18px;font-weight:700;color:var(--primary);"></div>
+  </div>
+</div>
+
+<!-- 結帳方式 -->
+<div class="checkout-options">
+  <!-- 7-11 賣貨便 -->
+  <div class="checkout-card primary" onclick="goMyship()">
+    <span class="badge-hot">推薦</span>
+    <div class="card-icon">🏪</div>
+    <h3>7-11 賣貨便取貨付款</h3>
+    <p class="card-desc">到 7-11 門市取貨並付款，方便又安全。賣貨便平台完整保障買賣雙方。</p>
+    <ul class="card-features">
+      <li>7-11 門市取貨付款</li>
+      <li>1-3 天到貨</li>
+      <li>平台交易保障</li>
+      <li>支援信用卡 / icash Pay</li>
+    </ul>
+    <a class="btn" href="https://myship.7-11.com.tw/general/detail?id=GM2605018541234" target="_blank" onclick="goMyship()">前往賣貨便結帳 →</a>
+  </div>
+  <!-- LINE 訂購 -->
+  <div class="checkout-card secondary" onclick="goLine()">
+    <div class="card-icon">💬</div>
+    <h3>LINE 私訊訂購</h3>
+    <p class="card-desc">直接透過 LINE 與我們聯絡，客製化你的訂單內容，任何問題都能即時回覆。</p>
+    <ul class="card-features">
+      <li>一對一客服回覆</li>
+      <li>客製化商品組合</li>
+      <li>可詢問任何問題</li>
+      <li>支援面交 / 宅配</li>
+    </ul>
+    <a class="btn" href="https://line.me/R/ti/p/@938nzmjr" target="_blank">LINE 訂購 →</a>
+  </div>
+</div>
+
+<!-- 注意事項 -->
+<div class="note-box">
+  <div class="note-box-inner">
+    💡 <b>小提醒：</b>賣貨便商店的商品為禮盒與水果箱組合。如果你想購買單品水果或客製化搭配，建議使用 LINE 訂購，我們會為你量身準備！
+  </div>
+</div>
+
+<footer>
+  <div><h3>爆甜水果鋪</h3><p>主打產地直送、當季新鮮、家庭水果箱與節慶禮盒。適合日常補給、公司團購、送禮採購。</p></div>
+  <div><h3>商品分類</h3><a href="./products.html">全部水果</a><a href="./hot.html">熱銷推薦</a><a href="./gift.html">水果禮盒</a></div>
+  <div><h3>服務說明</h3><a href="./weekly-box.html">一週水果箱</a><a href="./contact.html">配送說明</a><a href="./gift.html">企業團購</a></div>
+  <div><h3>聯絡方式</h3><a href="https://line.me/R/ti/p/@938nzmjr" target="_blank">LINE：@938nzmjr</a><a href="tel:0926656666">電話：0926-656666</a><a href="mailto:ilohas6868@gmail.com">Email：ilohas6868@gmail.com</a></div>
+</footer>
+<div class="copyright">&copy; 2026 爆甜水果鋪 Sweet Burst Fruits. All Rights Reserved.</div>
+
+<script src="./js/app.js"></script>
+<script>
+function goMyship(){
+  // 清空購物車，因為用戶會在賣貨便重新選購
+  localStorage.removeItem('sweetFruitCart');
+  updateCart();
+}
+function goLine(){
+  // LINE 訂購不清空購物車，方便用戶回來參考
+}
+// 購物車預覽
+function renderCartPreview(){
+  const list = document.getElementById('cartPreviewList');
+  const totalEl = document.getElementById('cartPreviewTotal');
+  if(!list) return;
+  if(cart.length === 0){
+    list.innerHTML = '<span class="cart-preview-empty">購物車是空的 — 沒關係，你可以直接在賣貨便或 LINE 選購！</span>';
+    if(totalEl) totalEl.textContent = '';
+    return;
+  }
+  const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
+  list.innerHTML = cart.map(i => 
+    `<span class="cart-preview-item"><b>${i.name}</b> × ${i.qty}（NT$${(i.price*i.qty).toLocaleString()}）</span>`
+  ).join('');
+  if(totalEl) totalEl.textContent = '小計 NT$' + total.toLocaleString();
+}
+document.addEventListener('DOMContentLoaded', renderCartPreview);
+</script>
 </body>
 </html>
