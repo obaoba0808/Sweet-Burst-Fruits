@@ -109,7 +109,7 @@
       <li>平台交易保障</li>
       <li>支援信用卡 / icash Pay</li>
     </ul>
-    <a class="btn" href="https://myship.7-11.com.tw/general/detail?id=GM2605018541234" target="_blank" onclick="goMyship()">前往賣貨便結帳 →</a>
+    <a class="btn" href="https://myship.7-11.com.tw/general/detail?id=GM2605018541234" target="_blank">前往賣貨便結帳 →</a>
   </div>
   <!-- LINE 訂購 -->
   <div class="checkout-card secondary" onclick="goLine()">
@@ -154,12 +154,12 @@
 <script src="./js/app.js"></script>
 <script>
 function goMyship(){
-  // 清空購物車，因為用戶會在賣貨便重新選購
   localStorage.removeItem('sweetFruitCart');
   updateCart();
+  window.open('https://myship.7-11.com.tw/general/detail?id=GM2605018541234','_blank');
 }
 function goLine(){
-  // LINE 訂購不清空購物車，方便用戶回來參考
+  window.open('https://line.me/R/ti/p/@938nzmjr','_blank');
 }
 // 購物車預覽
 function renderCartPreview(){
