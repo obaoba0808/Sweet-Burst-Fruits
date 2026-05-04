@@ -20,7 +20,7 @@ function card(p){
       <p>${p.desc}</p>
       <div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div>
     </div>
-    <button class="buy" onclick="addCart(${JSON.stringify(p.id)})">🛒</button>
+    <button class="buy" onclick='addCart(${JSON.stringify(p.id)})'>🛒</button>
   </article>`;
 }
 function render(target='productGrid', list=products){
@@ -66,7 +66,7 @@ function updateCart(){
     items.innerHTML = cart.length ? cart.map(i=>`<div class="cart-item">
       <img src="${i.img}" alt="${i.name}">
       <div><b>${i.name}</b><small>${money(i.price)}</small></div>
-      <div class="qty"><button onclick="changeQty(${i.id},-1)">-</button><span>${i.qty}</span><button onclick="changeQty(${i.id},1)">+</button></div>
+      <div class="qty"><button onclick='changeQty(${JSON.stringify(i.id)},-1)'>-</button><span>${i.qty}</span><button onclick='changeQty(${JSON.stringify(i.id)},1)'>+</button></div>
     </div>`).join('') : '<p style="color:#777;font-weight:800">購物車目前是空的</p>';
   }
   const total=document.getElementById('cartTotal');
