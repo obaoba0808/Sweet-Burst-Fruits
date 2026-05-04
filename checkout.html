@@ -8,61 +8,143 @@
   <link rel="canonical" href="https://obaoba0808.github.io/Sweet-Burst-Fruits/checkout.html">
   <link rel="stylesheet" href="./css/style.css">
   <style>
-    .checkout-hero { text-align:center; padding:40px 20px 20px; }
-    .checkout-hero h2 { color:var(--primary); font-size:28px; margin-bottom:8px; }
-    .checkout-hero p { color:#777; font-size:16px; }
-    .checkout-options { max-width:800px; margin:0 auto; padding:0 20px 60px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-    .checkout-card {
-      background:#fff; border-radius:16px; padding:32px 24px; text-align:center;
-      box-shadow:0 4px 16px rgba(0,0,0,0.08); transition:transform 0.25s,box-shadow 0.25s;
-      border:2px solid transparent; cursor:pointer; position:relative;
+    /* ── Hero Banner ── */
+    .checkout-hero {
+      background:linear-gradient(135deg,#ff7a00 0%,#ffb703 100%);
+      text-align:center; padding:56px 24px 44px; position:relative; overflow:hidden;
     }
-    .checkout-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.12); }
-    .checkout-card.primary { border-color:var(--primary); }
-    .checkout-card .card-icon { font-size:48px; margin-bottom:16px; }
-    .checkout-card h3 { font-size:20px; margin-bottom:10px; color:#333; }
-    .checkout-card .card-desc { color:#666; font-size:14px; line-height:1.7; margin-bottom:20px; }
-    .checkout-card .card-features { text-align:left; margin-bottom:20px; }
-    .checkout-card .card-features li { list-style:none; padding:6px 0; font-size:14px; color:#555; }
-    .checkout-card .card-features li::before { content:'✓ '; color:#2e7d32; font-weight:bold; }
-    .checkout-card .btn { 
-      display:inline-block; padding:12px 28px; border-radius:8px; font-size:16px; font-weight:600;
-      text-decoration:none; transition:background 0.3s,transform 0.2s;
+    .checkout-hero::before {
+      content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px;
+      border-radius:50%; background:rgba(255,255,255,.12);
+    }
+    .checkout-hero::after {
+      content:''; position:absolute; bottom:-40px; left:-40px; width:160px; height:160px;
+      border-radius:50%; background:rgba(255,255,255,.08);
+    }
+    .checkout-hero h2 { color:#fff; font-size:34px; font-weight:900; margin-bottom:8px; position:relative; z-index:1; }
+    .checkout-hero p { color:rgba(255,255,255,.92); font-size:17px; font-weight:800; position:relative; z-index:1; }
+
+    /* ── 購物車預覽 ── */
+    .cart-preview { max-width:860px; margin:-28px auto 0; padding:0 24px; position:relative; z-index:2; }
+    .cart-preview-card {
+      background:#fff; border-radius:22px; padding:24px 28px;
+      box-shadow:0 8px 32px rgba(255,106,0,.14); border:1.5px solid #ffe0bd;
+    }
+    .cart-preview-card h3 { font-size:18px; color:var(--orange); margin-bottom:14px; font-weight:900; }
+    .cart-preview-list { display:flex; flex-wrap:wrap; gap:10px; }
+    .cart-preview-item {
+      background:linear-gradient(135deg,#fff7ed,#fff2e6); padding:8px 16px; border-radius:999px;
+      font-size:13px; color:#555; font-weight:700; border:1px solid #ffd1ad;
+    }
+    .cart-preview-item b { color:var(--orange); }
+    .cart-preview-empty { color:#aaa; font-size:14px; font-weight:700; }
+
+    /* ── 結帳卡片區 ── */
+    .checkout-options {
+      max-width:860px; margin:32px auto; padding:0 24px 48px;
+      display:grid; grid-template-columns:1fr 1fr; gap:28px;
+    }
+    .checkout-card {
+      background:#fff; border-radius:24px; padding:36px 28px; text-align:center;
+      box-shadow:0 6px 24px rgba(0,0,0,.08); transition:.28s;
+      border:2px solid #f0e6db; cursor:pointer; position:relative; overflow:hidden;
+    }
+    .checkout-card:hover {
+      transform:translateY(-6px); box-shadow:0 16px 40px rgba(255,106,0,.18);
+      border-color:#ffd1ad;
+    }
+    .checkout-card.primary {
+      background:linear-gradient(160deg,#fffaf5,#fff3e8);
+      border-color:var(--orange);
+      box-shadow:0 8px 32px rgba(255,106,0,.16);
+    }
+    .checkout-card.primary:hover {
+      box-shadow:0 20px 52px rgba(255,106,0,.26);
+    }
+    .badge-hot {
+      position:absolute; top:16px; right:-32px;
+      background:linear-gradient(90deg,#ff4444,#ff6b35); color:#fff;
+      padding:6px 48px; border-radius:0; font-size:12px; font-weight:900;
+      transform:rotate(35deg); box-shadow:0 4px 12px rgba(255,68,68,.3);
+    }
+    .card-icon {
+      width:80px; height:80px; border-radius:22px; margin:0 auto 20px;
+      display:grid; place-items:center; font-size:40px;
+    }
+    .checkout-card.primary .card-icon {
+      background:linear-gradient(135deg,#ff7a00,#ffb703); box-shadow:0 8px 22px rgba(255,122,0,.28);
+    }
+    .checkout-card.secondary .card-icon {
+      background:linear-gradient(135deg,#06c755,#34d058); box-shadow:0 8px 22px rgba(6,199,85,.28);
+    }
+    .checkout-card h3 { font-size:22px; font-weight:900; margin-bottom:10px; color:#222; }
+    .checkout-card.primary h3 { color:var(--orange); }
+    .checkout-card .card-desc { color:#666; font-size:14px; line-height:1.8; margin-bottom:22px; font-weight:700; }
+    .checkout-card .card-features { text-align:left; margin-bottom:24px; }
+    .checkout-card .card-features li {
+      list-style:none; padding:8px 0; font-size:14px; color:#555; font-weight:700;
+      border-bottom:1px dashed #f0e6db; display:flex; align-items:center; gap:10px;
+    }
+    .checkout-card .card-features li:last-child { border-bottom:none; }
+    .checkout-card .card-features li::before {
+      content:''; display:block; width:22px; height:22px; border-radius:8px; flex-shrink:0;
+      background:linear-gradient(135deg,#ff7a00,#ffb703); color:#fff; font-size:11px;
+      font-weight:900; text-align:center; line-height:22px;
+      content:'✓';
+    }
+    .checkout-card.secondary .card-features li::before {
+      background:linear-gradient(135deg,#06c755,#34d058);
+    }
+    .checkout-card .btn {
+      display:inline-block; padding:14px 32px; border-radius:999px; font-size:17px; font-weight:900;
+      text-decoration:none; transition:.25s; letter-spacing:.5px;
     }
     .checkout-card .btn:hover { transform:translateY(-2px); }
-    .checkout-card.primary .btn { background:var(--primary); color:#fff; }
-    .checkout-card.primary .btn:hover { background:#e55a2b; }
-    .checkout-card.secondary .btn { background:#06c755; color:#fff; }
-    .checkout-card.secondary .btn:hover { background:#05b04c; }
-    .badge-hot {
-      position:absolute; top:-8px; right:16px; background:#ff4444; color:#fff;
-      padding:4px 12px; border-radius:12px; font-size:12px; font-weight:bold;
+    .checkout-card.primary .btn {
+      background:linear-gradient(135deg,#ff7a00,#ff9f1c); color:#fff;
+      box-shadow:0 10px 24px rgba(255,106,0,.3);
     }
-    .cart-preview {
-      max-width:800px; margin:0 auto 20px; padding:0 20px;
+    .checkout-card.primary .btn:hover { box-shadow:0 14px 32px rgba(255,106,0,.4); }
+    .checkout-card.secondary .btn {
+      background:linear-gradient(135deg,#06c755,#34d058); color:#fff;
+      box-shadow:0 10px 24px rgba(6,199,85,.3);
     }
-    .cart-preview-card {
-      background:#fff; border-radius:12px; padding:20px 24px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.06);
-    }
-    .cart-preview-card h3 { font-size:16px; color:#333; margin-bottom:12px; }
-    .cart-preview-list { display:flex; flex-wrap:wrap; gap:8px; }
-    .cart-preview-item {
-      background:#fff5f2; padding:6px 14px; border-radius:20px;
-      font-size:13px; color:#555;
-    }
-    .cart-preview-item b { color:var(--primary); }
-    .cart-preview-empty { color:#999; font-size:14px; }
-    .note-box {
-      max-width:800px; margin:20px auto; padding:0 20px;
-    }
+    .checkout-card.secondary .btn:hover { box-shadow:0 14px 32px rgba(6,199,85,.4); }
+
+    /* ── 提醒框 ── */
+    .note-box { max-width:860px; margin:0 auto 48px; padding:0 24px; }
     .note-box-inner {
-      background:#fffbe6; border:1px solid #ffe58f; border-radius:10px;
-      padding:16px 20px; font-size:13px; color:#8c6d1f; line-height:1.8;
+      background:linear-gradient(135deg,#fff7ed,#fff2e6); border:1.5px solid #ffd1ad;
+      border-radius:18px; padding:20px 24px; font-size:14px; color:#8c5a1f;
+      line-height:1.9; font-weight:700;
     }
-    @media (max-width:600px) {
-      .checkout-options { grid-template-columns:1fr; }
-      .checkout-card { padding:24px 18px; }
+    .note-box-inner b { color:var(--orange); }
+
+    /* ── Step Indicator ── */
+    .step-bar {
+      max-width:860px; margin:28px auto 0; padding:0 24px;
+      display:flex; align-items:center; justify-content:center; gap:0;
+    }
+    .step-dot {
+      width:36px; height:36px; border-radius:50%; display:grid; place-items:center;
+      font-size:14px; font-weight:900; transition:.3s;
+    }
+    .step-dot.done { background:var(--orange); color:#fff; box-shadow:0 4px 14px rgba(255,106,0,.3); }
+    .step-dot.active { background:linear-gradient(135deg,#ff7a00,#ffb703); color:#fff; box-shadow:0 6px 20px rgba(255,122,0,.35); }
+    .step-dot.pending { background:#f0e6db; color:#bbb; }
+    .step-line { width:60px; height:3px; background:#f0e6db; }
+    .step-line.done { background:linear-gradient(90deg,#ff7a00,#ffb703); }
+    .step-label { font-size:12px; color:#999; font-weight:800; margin-top:6px; text-align:center; }
+    .step-label.active { color:var(--orange); }
+    .step-item { display:flex; flex-direction:column; align-items:center; }
+
+    @media (max-width:680px) {
+      .checkout-hero { padding:40px 18px 32px; }
+      .checkout-hero h2 { font-size:26px; }
+      .checkout-options { grid-template-columns:1fr; gap:20px; padding:0 16px 36px; }
+      .checkout-card { padding:28px 20px; }
+      .step-bar { gap:0; }
+      .step-line { width:36px; }
     }
   </style>
 </head>
@@ -86,12 +168,21 @@
   <p>挑選最方便的方式完成訂購</p>
 </section>
 
+<!-- 步驟指示器 -->
+<div class="step-bar">
+  <div class="step-item"><div class="step-dot done">1</div><div class="step-label active">選購商品</div></div>
+  <div class="step-line done"></div>
+  <div class="step-item"><div class="step-dot active">2</div><div class="step-label active">結帳方式</div></div>
+  <div class="step-line"></div>
+  <div class="step-item"><div class="step-dot pending">3</div><div class="step-label">完成訂單</div></div>
+</div>
+
 <!-- 購物車預覽 -->
 <div class="cart-preview">
   <div class="cart-preview-card">
     <h3>📦 你的購物車</h3>
     <div id="cartPreviewList" class="cart-preview-list"></div>
-    <div id="cartPreviewTotal" style="text-align:right;margin-top:12px;font-size:18px;font-weight:700;color:var(--primary);"></div>
+    <div id="cartPreviewTotal" style="text-align:right;margin-top:14px;font-size:20px;font-weight:900;color:var(--orange);"></div>
   </div>
 </div>
 
@@ -102,7 +193,7 @@
     <span class="badge-hot">推薦</span>
     <div class="card-icon">🏪</div>
     <h3>7-11 賣貨便取貨付款</h3>
-    <p class="card-desc">到 7-11 門市取貨並付款，方便又安全。賣貨便平台完整保障買賣雙方。</p>
+    <p class="card-desc">到 7-11 門市取貨並付款，方便又安全。<br>賣貨便平台完整保障買賣雙方。</p>
     <ul class="card-features">
       <li>7-11 門市取貨付款</li>
       <li>1-3 天到貨</li>
@@ -115,7 +206,7 @@
   <div class="checkout-card secondary" onclick="goLine()">
     <div class="card-icon">💬</div>
     <h3>LINE 私訊訂購</h3>
-    <p class="card-desc">直接透過 LINE 與我們聯絡，客製化你的訂單內容，任何問題都能即時回覆。</p>
+    <p class="card-desc">直接透過 LINE 與我們聯絡，<br>客製化你的訂單內容，任何問題都能即時回覆。</p>
     <ul class="card-features">
       <li>一對一客服回覆</li>
       <li>客製化商品組合</li>
