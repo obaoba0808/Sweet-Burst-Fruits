@@ -136,7 +136,7 @@ function goMyship(productId, specId){
     carQty: "1",
     carMinQty: "1"
   }));
-  const proxyUrl = `https://sbf-proxy.vercel.app/api/ms/general/detail/${MYSHIP_STORE}?_checkout=${params}`;
+  const proxyUrl = `https://sbf-proxy.vercel.app/api/ms/general/detail?id=${MYSHIP_STORE}&_checkout=${params}`;
   window.open(proxyUrl, '_blank');
 }
 function goLine(){
